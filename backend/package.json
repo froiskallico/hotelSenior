@@ -1,0 +1,9 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "hotelSenior RESTful api",
+  "main": "index.js",
+  "repository": "https://github.com/froiskallico/hotelSenior.git",
+  "author": "Kallico Fróis <froiskallico@gmail.com>",
+  "license": "MIT"
+}
