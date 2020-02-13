@@ -88,8 +88,4 @@ module.exports = {
       });
   },
 
-  // async destroy(req, res) {
-
-  // },
-
 };
