@@ -19,7 +19,7 @@ module.exports = {
       return res
         .status(409)
         .json({
-          error: 'Hóspede já cadastrado com este numero de Documento',
+          error: 'Hóspede já cadastrado com este numero de documento',
           guest,
         });
     } catch (err) {
@@ -27,7 +27,7 @@ module.exports = {
     }
   },
 
-  async show(req, res) {
+  async index(req, res) {
     const {
       nome,
       documento,
@@ -48,9 +48,45 @@ module.exports = {
     res.json({ guest });
   },
 
-  // async update(req, res) {
+  async update(req, res) {
+    const { _id } = req.params;
+    const { nome, documento, telefone } = req.body;
 
-  // },
+    const guest = await Guest.findOne({ _id }, (err) => {
+      if (err) {
+        return res.status(404).json({ error: 'Usuário não encontrado!' });
+      }
+    });
+
+    try {
+      if (guest) {
+        guest.nome = nome || guest.nome;
+        guest.documento = documento || guest.documento;
+        guest.telefone = telefone || guest.telefone;
+
+        await guest.save();
+
+        return res
+          .status(200)
+          .json({ guest });
+      }
+    } catch (err) {
+      return res.status(500);
+    }
+  },
+
+  async destroy(req, res) {
+    const { _id } = req.params;
+
+    const guest = await Guest.findOneAndDelete({ _id });
+
+    return res
+      .status(200)
+      .json({
+        message: 'Hóspede deletado com sucesso',
+        guest,
+      });
+  },
 
   // async destroy(req, res) {
 

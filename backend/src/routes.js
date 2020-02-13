@@ -5,7 +5,8 @@ const GuestController = require('./controllers/GuestController');
 const routes = Router();
 
 routes.post('/guests', GuestController.store);
-routes.get('/guests', GuestController.show);
-// routes.get('/guests', GuestController.index);
+routes.get('/guests', GuestController.index);
+routes.put('/guests/:_id', GuestController.update);
+routes.delete('/guests/:_id', GuestController.destroy);
 
 module.exports = routes;
