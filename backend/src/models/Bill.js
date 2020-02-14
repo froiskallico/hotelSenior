@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-const GuestSchema = require('Guest');
+const GuestSchema = require('./Guest');
 
 const BillSchema = new mongoose.Schema({
   hospede: {
-    type: GuestSchema,
+    type: { GuestSchema },
     required: true,
   },
-  dataEntrada: { type: Date, required: true },
+  dataEntrada: { type: String, required: true },
   dataSaida: Date,
   adicionalVeiculo: { type: Boolean, required: true },
   valor: Number,
