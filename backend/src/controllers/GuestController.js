@@ -36,14 +36,23 @@ module.exports = {
       pg_size,
     } = req.query;
 
-    const guest = await Guest
-      .find({
-        nome: new RegExp(nome, 'i'),
-        documento: new RegExp(documento, 'i'),
-        telefone: new RegExp(telefone, 'i'),
-      })
-      .limit(parseInt(pg_size) || 10)
-      .skip(parseInt(pg_size) * (parseInt(pg) || 0));
+    const { _id } = req.params;
+
+    let guest;
+
+    if (_id) {
+      guest = await Guest.findOne({ _id });
+    } else {
+      console.log('OI');
+      guest = await Guest
+        .find({
+          nome: new RegExp(nome, 'i'),
+          documento: new RegExp(documento, 'i'),
+          telefone: new RegExp(telefone, 'i'),
+        })
+        .limit(parseInt(pg_size) || 10)
+        .skip(parseInt(pg_size) * (parseInt(pg) || 0));
+    }
 
     res.json({ guest });
   },

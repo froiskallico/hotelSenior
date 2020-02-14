@@ -5,7 +5,7 @@ const GuestController = require('./controllers/GuestController');
 const routes = Router();
 
 routes.post('/guests', GuestController.store);
-routes.get('/guests', GuestController.index);
+routes.get('/guests/:_id?', GuestController.index);
 routes.put('/guests/:_id', GuestController.update);
 routes.delete('/guests/:_id', GuestController.destroy);
 
