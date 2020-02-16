@@ -11,7 +11,8 @@ routes.put('/guests/:_id', GuestController.update);
 routes.delete('/guests/:_id', GuestController.destroy);
 
 routes.post('/bills', BillController.store);
-routes.get('/bills', BillController.index);
+routes.get('/bills/', BillController.index);
+routes.put('/bills/:_id', BillController.update);
 routes.delete('/bills/:_id', BillController.destroy);
 
 module.exports = routes;

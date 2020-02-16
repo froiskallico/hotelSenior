@@ -45,10 +45,31 @@ module.exports = {
       bill = await Bill.find({ dataSaida: { $exists: false } });
     } else if (open == 'false') {
       console.log('Fechado');
+      // TODO: fix the search for bill wich "dataSaida" exists in databasec
       bill = await Bill.find({ dataSaida: { $exists: true } });
     }
 
     return res.json({ bill });
+  },
+
+  async update(req, res) {
+    const { _id } = req.params;
+    const { dataSaida } = req.body;
+
+    const bill = await Bill.findOne({ _id });
+
+    try {
+      if (bill) {
+        bill.dataSaida = dataSaida;
+
+        bill.save;
+
+        return res.json({ bill });
+      }
+      res.status(404).json({ error: 'Erro. Conta não encontrada para fazer o checkout!' });
+    } catch (err) {
+      res.status(500);
+    }
   },
 
   async destroy(req, res) {
