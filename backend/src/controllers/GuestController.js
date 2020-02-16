@@ -1,4 +1,5 @@
 const Guest = require('../models/Guest');
+const CheckPresents = require('../middleware/CheckPresents');
 
 module.exports = {
   async store(req, res) {
@@ -8,11 +9,15 @@ module.exports = {
 
     try {
       if (!guest) {
-        guest = await Guest.create({
-          nome,
-          documento,
-          telefone,
-        });
+        try {
+          guest = await Guest.create({
+            nome,
+            documento,
+            telefone,
+          });
+        } catch (err) {
+          res.json({ error: err.message });
+        }
 
         return res.json({ guest });
       }
@@ -34,6 +39,7 @@ module.exports = {
       telefone,
       pg,
       pg_size,
+      present,
     } = req.query;
 
     const { _id } = req.params;
@@ -42,8 +48,9 @@ module.exports = {
 
     if (_id) {
       guest = await Guest.findOne({ _id });
+    } else if (present) {
+      guest = await CheckPresents(present);
     } else {
-      console.log('OI');
       guest = await Guest
         .find({
           nome: new RegExp(nome, 'i'),
@@ -54,12 +61,14 @@ module.exports = {
         .skip(parseInt(pg_size) * (parseInt(pg) || 0));
     }
 
-    res.json({ guest });
+    return res.json({ guest });
   },
 
   async update(req, res) {
     const { _id } = req.params;
-    const { nome, documento, telefone } = req.body;
+    const {
+      nome, documento, telefone, inside,
+    } = req.body;
 
     const guest = await Guest.findOne({ _id }, (err) => {
       if (err) {
@@ -72,6 +81,7 @@ module.exports = {
         guest.nome = nome || guest.nome;
         guest.documento = documento || guest.documento;
         guest.telefone = telefone || guest.telefone;
+        guest.inside = inside;
 
         await guest.save();
 
