@@ -1,6 +1,8 @@
 const Bill = require('../models/Bill');
 
 const GuestValidator = require('./utils/GuestValidator');
+const BillCalculator = require('./utils/BillCalculator');
+
 
 module.exports = {
   async store(req, res) {
@@ -41,7 +43,6 @@ module.exports = {
     } else if (open == 'true') {
       bill = await Bill.find({ dataSaida: { $exists: false } });
     } else if (open == 'false') {
-      // TODO: fix the search for bill wich "dataSaida" exists in databasec
       bill = await Bill.find({ dataSaida: { $exists: true } });
     }
 
@@ -60,12 +61,19 @@ module.exports = {
       return res.status(422).json({ error: 'Erro. Conta não encontrada para fazer o checkout!' });
     }
 
-
     if (dataSaida < bill.dataEntrada) {
       return res.json({ error: 'Erro. A data de saída deve ser posterior à data de entrada' });
     }
+
     try {
       bill.dataSaida = dataSaida;
+
+      try {
+        const billAmount = BillCalculator(bill.dataEntrada, dataSaida, bill.adicionalVeiculo);
+        bill.amount = billAmount;
+      } catch (err) {
+        throw (err.message);
+      }
 
       bill.save();
 
