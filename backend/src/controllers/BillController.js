@@ -15,17 +15,16 @@ module.exports = {
         });
 
         if (bill) {
-          res.json(bill);
-        } else {
-          res
-            .status(501)
-            .json({ error: 'Erro. Check-in não foi efetuado com sucesso. Por favor, tente novamente!' });
+          return res.json(bill);
         }
+        return res
+          .status(501)
+          .json({ error: 'Erro. Check-in não foi efetuado com sucesso. Por favor, tente novamente!' });
       } catch (err) {
-        res.status(500);
+        return res.status(500).json(err);
       }
     } else {
-      res
+      return res
         .status(422)
         .json(
           { error: 'Para fazer o Check-in é necessário informar um hóspede já cadastrado!' },
@@ -38,13 +37,10 @@ module.exports = {
     let bill;
 
     if (open == undefined) {
-      console.log('tudo');
       bill = await Bill.find();
     } else if (open == 'true') {
-      console.log('aberto');
       bill = await Bill.find({ dataSaida: { $exists: false } });
     } else if (open == 'false') {
-      console.log('Fechado');
       // TODO: fix the search for bill wich "dataSaida" exists in databasec
       bill = await Bill.find({ dataSaida: { $exists: true } });
     }
@@ -56,26 +52,39 @@ module.exports = {
     const { _id } = req.params;
     const { dataSaida } = req.body;
 
-    const bill = await Bill.findOne({ _id });
+    let bill;
 
     try {
-      if (bill) {
-        bill.dataSaida = dataSaida;
-
-        bill.save;
-
-        return res.json({ bill });
-      }
-      res.status(404).json({ error: 'Erro. Conta não encontrada para fazer o checkout!' });
+      bill = await Bill.findOne({ _id });
     } catch (err) {
-      res.status(500);
+      return res.status(422).json({ error: 'Erro. Conta não encontrada para fazer o checkout!' });
+    }
+
+
+    if (dataSaida < bill.dataEntrada) {
+      return res.json({ error: 'Erro. A data de saída deve ser posterior à data de entrada' });
+    }
+    try {
+      bill.dataSaida = dataSaida;
+
+      bill.save();
+
+      return res.json({ bill });
+    } catch (err) {
+      return res.status(500).json(err);
     }
   },
 
   async destroy(req, res) {
     const { _id } = req.params;
 
-    const bill = await Bill.findOneAndDelete({ _id });
+    let bill;
+
+    try {
+      await Bill.findOneAndDelete({ _id });
+    } catch (err) {
+      return res.status(500).json(err.message);
+    }
 
     return res
       .status(200)

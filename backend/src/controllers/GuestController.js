@@ -72,7 +72,7 @@ module.exports = {
 
     const guest = await Guest.findOne({ _id }, (err) => {
       if (err) {
-        return res.status(404).json({ error: 'Usuário não encontrado!' });
+        return res.status(422).json({ error: 'Usuário não encontrado!' });
       }
     });
 
