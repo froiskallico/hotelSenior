@@ -70,7 +70,7 @@ module.exports = {
 
       try {
         const billAmount = BillCalculator(bill.dataEntrada, dataSaida, bill.adicionalVeiculo);
-        bill.amount = billAmount;
+        bill.valor = billAmount;
       } catch (err) {
         throw (err.message);
       }
