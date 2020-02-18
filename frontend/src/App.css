@@ -1,0 +1,70 @@
+#app {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#topbar {
+  width: 100%;
+  background-color: #008269;
+  margin: auto;
+  padding: 16px 32px;
+}
+
+#main {
+  padding: 32px;
+}
+
+.default {
+  background-color: #1d1dd3;
+  border: 0;
+  border-radius: 8px;
+  height: 42px;
+  color: white;
+  font-size: 16px;
+  padding: 0 24px;
+}
+
+.section {
+  margin-top: 16px;
+  border: 1px #1d1dd3 solid;
+  border-radius: 8px 8px 0 0;
+  width: 100%;
+}
+
+.sectionHeader {
+  width: 100%;
+  background-color: #1d1dd3;
+  border-radius: 8px 8px 0 0;
+}
+
+.sectionHeader > h1 {
+  margin: auto;
+  padding: 16px;
+  color: #fff;
+  font-size: 20px;  
+  font-weight: 200;
+}
+
+.sectionBody {
+  padding: 16px;
+  display: grid;
+}
+
+form .input_group {
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.input_block {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+input {
+  font-size: 24px;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px rgb(212, 210, 226) solid;
+}
