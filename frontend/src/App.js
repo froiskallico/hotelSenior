@@ -1,84 +1,81 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import { MdArrowBack, MdArrowForward, MdMenu } from "react-icons/md";
 
+import TopBar from "./components/TopBar";
+import DefaultButton from "./components/DefaultButton";
+import Section from "./components/Section";
+import TextInput from "./components/TextInput";
+import CheckInput from "./components/CheckInput";
+import RadioInput from "./components/RadioInput";
 
-import logoSenior from "./assets/logoSenior.svg";
+import { Previous, Next } from "./components/NavigationButtons";
+
 import "./global.css";
 
+import api from "./services/api";
 
 function App() {
+  const [guests, setGuests] = useState([]);
+
+  useEffect(() => {
+    async function loadGuests() {
+      const response = await api.get("/guests");
+
+      setGuests(response.data);
+    }
+
+    loadGuests();   
+  }, []);
+
   return (
     <div id="app">
-      <header id="topbar">
-        <img id="logoSenior" src={logoSenior} alt="Senior" />
-        <MdMenu id="MenuIcon"/>
-      </header>
-
+      <TopBar />
+      
       <main id="main">
-        <button className="default">Incluir pessoa</button>
+        <DefaultButton title="Incluir pessoa" />
+        <Section title="Novo Check-in">
+          <form>
+            <div className="input_group">
+              <TextInput name="dataEntrada" label="Data/hora de entrada" />
+              <TextInput name="dataSaida" label="Data/hora de saida" />
+            </div>
 
-        <div className="section">
-          <div className="sectionHeader">
-            <h1>Novo Check in</h1>
-          </div>
+            <div className="input_group">
+              <TextInput name="pessoa" label="Pessoa" />
+              <CheckInput name="possuiVeiculo" label="Possui Veiculo" />
+            </div>
+          </form>
+          <DefaultButton title="Salvar" />
+        </Section>
 
-          <div className="sectionBody">
-            <form>
-              <div className="input_group">
-                <div className="input column">
-                  <label htmlFor="dataEntrada">Data/hora de entrada</label>
-                  <input name="dataEntrada" id="dataEntrada" required />
-                </div>
+        <Section title="Consultas">
+          <p>Filtrar por:</p>
 
-                <div className="input column">
-                  <label htmlFor="dataSaida">Data/hora de Saida</label>
-                  <input name="dataSaida" id="dataSaida" required />
-                </div>
-              </div>
+          <RadioInput
+            name="present"
+            id="true"
+            value="true"
+            label="Pessoas ainda presentes"
+            checked="checked"
+          />
 
-              <div className="input_group">
-                <div className="input column">
-                  <label htmlFor="pessoa">Pessoa</label>
-                  <input name="pessoa" id="pessoa" required />
-                </div>
+          <RadioInput
+            name="present"
+            id="false"
+            value="false"
+            label="Pessoas que já deixaram o hotel"
+          />
 
-                <div className="input row">
-                  <input
-                    type="checkbox"
-                    name="possuiVeiculo"
-                    id="possuiVeiculo"
-                    value="false"
-                  />
-                  <label htmlFor="possuiVeiculo">Possui Veiculo</label>
-                </div>
-              </div>
-            </form>
-            <button className="default">Salvar</button>
-          </div>
-        </div>
-
-        <div className="section">
-          <div className="sectionHeader">
-            <h1>Consultas</h1>
-          </div>
-
-          <div className="sectionBody">
-            <p>Filtrar por:</p>
-
-            <input type="radio" name="present" id="true" value="true" />
-            <label htmlFor="false">Pessoas ainda presentes</label>
-
-            <input type="radio" name="present" id="false" value="false" />
-            <label htmlFor="false">Pessoas que já deixaram o hotel</label>
-
-            <table>
+          <table>
+            <thead>
               <tr>
                 <th>Nome</th>
                 <th>Documento</th>
                 <th>Valor gasto (R$)</th>
               </tr>
+            </thead>
 
+            <tbody>
               <tr>
                 <td>João da Silva</td>
                 <td>123456789</td>
@@ -96,12 +93,12 @@ function App() {
                 <td>789456123</td>
                 <td>650,00</td>
               </tr>
-            </table>
+            </tbody>
+          </table>
 
-            <button className="pageNavigation"><MdArrowBack className="icon"/>Previous</button>
-            <button className="pageNavigation">Next<MdArrowForward  className="icon" /></button>
-          </div>
-        </div>
+          <Previous />
+          <Next />
+        </Section>
       </main>
     </div>
   );

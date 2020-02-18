@@ -4,66 +4,8 @@
   flex-direction: column;
 }
 
-#topbar {
-  width: 100%;
-  background-color: #008269;
-  margin: auto;
-  padding: 8px 32px;
-  position: sticky;
-  top: 0;
-  left: 0;
-}
-
-#topbar > img {
-  height: 32px;
-}
-
-#topbar #MenuIcon {
-  font-size: 32px;
-  color: #fff;
-  margin: auto;
-  margin-left: 32px;
-}
-
 #main {
-  padding: 0 32px;
-  padding-bottom: 32px;
-
-}
-
-button.default {
-  background-color: #3c3cd3;
-  border: 0;
-  border-radius: 8px;
-  height: 32px;
-  color: white;
-  font-size: 12px;
-  padding: 0 24px;
-  margin-top: 16px
-}
-
-.section {
-  margin-top: 16px;
-  width: 100%;
-}
-
-.sectionHeader {
-  width: 100%;
-  background-color: #3c3cd3;
-  border-radius: 8px 8px 0 0;
-}
-
-.sectionHeader > h1 {
-  margin: auto;
-  padding: 8px;
-  color: #fff;
-  font-size: 14px;  
-  font-weight: 200;
-}
-
-.sectionBody {
-  border: 1px #3c3cd3 solid;
-  padding: 0 16px 16px;
+  padding: 0 32px 32px;
 }
 
 .input_group {
@@ -75,11 +17,6 @@ button.default {
 
 .input {
   margin: auto 0;
-}
-
-.input.column {
-  display: flex;
-  flex-direction: column;
 }
 
 input {
@@ -119,18 +56,3 @@ td {
   padding: 8px 0;
 }
 
-button.pageNavigation {
-  background-color: #e5e6f0;
-  border: 1px #ccc solid;
-  width: 120px;
-  border-radius: 40px;
-  color: #008269;
-  font-size:16px;
-  padding: 8px;
-  margin: 16px 8px 8px 0;
-}
-
-.icon {
- font-size: 12px;
- margin: auto 4px;
-}

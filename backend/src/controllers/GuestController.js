@@ -19,7 +19,7 @@ module.exports = {
           return res.json({ error: err.message });
         }
 
-        return res.json({ guest });
+        return res.json(guest);
       }
       return res
         .status(409)
@@ -61,7 +61,7 @@ module.exports = {
         .skip(parseInt(pg_size) * (parseInt(pg) || 0));
     }
 
-    return res.json({ guest });
+    return res.json(guest);
   },
 
   async update(req, res) {
@@ -87,7 +87,7 @@ module.exports = {
 
         return res
           .status(200)
-          .json({ guest });
+          .json(guest);
       }
     } catch (err) {
       return res.status(500);

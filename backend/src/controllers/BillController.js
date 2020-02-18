@@ -46,7 +46,7 @@ module.exports = {
       bill = await Bill.find({ dataSaida: { $exists: true } });
     }
 
-    return res.json({ bill });
+    return res.json(bill);
   },
 
   async update(req, res) {
@@ -77,7 +77,7 @@ module.exports = {
 
       bill.save();
 
-      return res.json({ bill });
+      return res.json(bill);
     } catch (err) {
       return res.status(500).json(err);
     }
