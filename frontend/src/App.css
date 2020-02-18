@@ -8,63 +8,129 @@
   width: 100%;
   background-color: #008269;
   margin: auto;
-  padding: 16px 32px;
+  padding: 8px 32px;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+#topbar > img {
+  height: 32px;
+}
+
+#topbar #MenuIcon {
+  font-size: 32px;
+  color: #fff;
+  margin: auto;
+  margin-left: 32px;
 }
 
 #main {
-  padding: 32px;
+  padding: 0 32px;
+  padding-bottom: 32px;
+
 }
 
-.default {
-  background-color: #1d1dd3;
+button.default {
+  background-color: #3c3cd3;
   border: 0;
   border-radius: 8px;
-  height: 42px;
+  height: 32px;
   color: white;
-  font-size: 16px;
+  font-size: 12px;
   padding: 0 24px;
+  margin-top: 16px
 }
 
 .section {
   margin-top: 16px;
-  border: 1px #1d1dd3 solid;
-  border-radius: 8px 8px 0 0;
   width: 100%;
 }
 
 .sectionHeader {
   width: 100%;
-  background-color: #1d1dd3;
+  background-color: #3c3cd3;
   border-radius: 8px 8px 0 0;
 }
 
 .sectionHeader > h1 {
   margin: auto;
-  padding: 16px;
+  padding: 8px;
   color: #fff;
-  font-size: 20px;  
+  font-size: 14px;  
   font-weight: 200;
 }
 
 .sectionBody {
-  padding: 16px;
-  display: grid;
+  border: 1px #3c3cd3 solid;
+  padding: 0 16px 16px;
 }
 
-form .input_group {
+.input_group {
+  display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  margin-top: 16px;
 }
 
-.input_block {
+.input {
+  margin: auto 0;
+}
+
+.input.column {
   display: flex;
   flex-direction: column;
-  margin-top: 8px;
 }
 
 input {
-  font-size: 24px;
-  padding: 4px;
+  font-size: 14px;
+  padding: 8px;
   border-radius: 4px;
   border: 1px rgb(212, 210, 226) solid;
+  margin-top: 4px;
+}
+
+label {
+  color: #07073a;
+  margin-left: 8px;
+  margin-right: 32px;
+  font-size: 14px;
+}
+
+
+p {
+  margin: 16px 0;
+}
+
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  margin-top: 16px
+}
+
+th {
+  border-bottom: 2px #bbb solid;
+  padding: 8px 0;
+}
+
+td {
+  border-top: 1px #bbb solid;
+  padding: 8px 0;
+}
+
+button.pageNavigation {
+  background-color: #e5e6f0;
+  border: 1px #ccc solid;
+  width: 120px;
+  border-radius: 40px;
+  color: #008269;
+  font-size:16px;
+  padding: 8px;
+  margin: 16px 8px 8px 0;
+}
+
+.icon {
+ font-size: 12px;
+ margin: auto 4px;
 }
