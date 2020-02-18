@@ -76,23 +76,15 @@ function App() {
             </thead>
 
             <tbody>
-              <tr>
-                <td>João da Silva</td>
-                <td>123456789</td>
-                <td>1939,00</td>
-              </tr>
-
-              <tr>
-                <td>Maria de Souza</td>
-                <td>456789123</td>
-                <td>949,00</td>
-              </tr>
-
-              <tr>
-                <td>Pedro Sauro</td>
-                <td>789456123</td>
-                <td>650,00</td>
-              </tr>
+              {
+                guests.map(guest => (
+                  <tr>
+                    <td>{guest.nome}</td>
+                    <td>{guest.documento}</td>
+                    <td>{guest.telefone}</td>
+                  </tr>
+                ))
+              }
             </tbody>
           </table>
 

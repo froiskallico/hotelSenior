@@ -67,7 +67,7 @@ module.exports = {
   async update(req, res) {
     const { _id } = req.params;
     const {
-      nome, documento, telefone, inside,
+      nome, documento, telefone, inside, valor,
     } = req.body;
 
     const guest = await Guest.findOne({ _id }, (err) => {
@@ -81,7 +81,8 @@ module.exports = {
         guest.nome = nome || guest.nome;
         guest.documento = documento || guest.documento;
         guest.telefone = telefone || guest.telefone;
-        guest.inside = inside;
+        guest.valorTotal += valor || guest.valorTotal;
+        guest.valorUltimaConta = valor || guest.valorUtimaConta;
 
         await guest.save();
 

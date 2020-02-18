@@ -1,7 +1,4 @@
-const moment = require('moment');
-
-
-// eslint-disable-next-line no-extend-native
+ // eslint-disable-next-line no-extend-native
 Date.prototype.addDays = function (days) {
   const date = new Date(this.valueOf());
 
@@ -51,7 +48,7 @@ Date.prototype.getDailyRate = function (needPark) {
   return dailyRate;
 };
 
-function BillCalculator(checkinDate, checkoutDate, needPark) {
+async function BillCalculator(hospede, checkinDate, checkoutDate, needPark) {
   checkinDate = new Date(checkinDate);
   checkoutDate = new Date(checkoutDate);
 
@@ -70,6 +67,8 @@ function BillCalculator(checkinDate, checkoutDate, needPark) {
     const dailyRate = checkoutDate.getDailyRate(needPark);
     amount += dailyRate;
   }
+
+  // TODO: Here update guest.valorTotal and guest.valorUltimaEstadia with the amount value
 
   return amount;
 }

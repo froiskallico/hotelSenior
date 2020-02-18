@@ -69,7 +69,7 @@ module.exports = {
       bill.dataSaida = dataSaida;
 
       try {
-        const billAmount = BillCalculator(bill.dataEntrada, dataSaida, bill.adicionalVeiculo);
+        const billAmount = await BillCalculator(bill.hospede, bill.dataEntrada, dataSaida, bill.adicionalVeiculo);
         bill.valor = billAmount;
       } catch (err) {
         throw (err.message);
