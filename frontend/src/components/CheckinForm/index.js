@@ -12,13 +12,12 @@ const CheckinForm = ({ data }) => {
   const [nomePessoa, setNomePessoa] = useState();
   const [adicionalVeiculo, setAdicionalVeiculo] = useState(false);
 
-  async function handleSubmit() {
-    
+  async function handleSubmit() {   
     const guestResponse = await api.get('/guests', { params: {nome: nomePessoa} } )
 
     const hospede = guestResponse.data[0]
 
-    data = {
+    let data = {
       hospede,
       dataEntrada,
       dataSaida,

@@ -8,7 +8,7 @@ const BillSchema = new mongoose.Schema({
     required: true,
   },
   dataEntrada: { type: String, required: true },
-  dataSaida: Date,
+  dataSaida: String,
   adicionalVeiculo: { type: Boolean, required: true },
   valor: Number,
 });

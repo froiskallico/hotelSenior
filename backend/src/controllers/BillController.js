@@ -19,6 +19,7 @@ module.exports = {
           dataSaida,
           adicionalVeiculo,
         });
+        console.log('ca');
 
         if (bill) {
           return res.json(bill);
