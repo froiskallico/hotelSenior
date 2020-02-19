@@ -1,12 +1,13 @@
 button.pageNavigation {
   background-color: #e5e6f0;
   border: 1px #ccc solid;
-  width: 120px;
+  width: 130px;
+  height: 30px;
   border-radius: 40px;
   color: #008269;
   font-size:16px;
-  padding: 8px;
-  margin: 16px 8px 8px 0;
+  padding: auto;
+  margin: auto 0;
 }
 
 .icon {

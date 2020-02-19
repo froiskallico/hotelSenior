@@ -71,9 +71,12 @@ function App() {
           />
 
           <GuestsTable guests={guests}/>
-          
+
+          <div className="pagination">
           <Previous onClick={setPg} currentPage={pg}/>
+          <p>{pg}</p>
           <Next onClick={setPg} currentPage={pg}/>
+          </div>
         </Section>
       </main>
     </div>

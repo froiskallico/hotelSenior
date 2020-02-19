@@ -25,3 +25,14 @@ td {
   padding: 8px 0;
 }
 
+.pagination {
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.pagination > p {
+  font-size: 14px;
+  margin: auto 16px;
+}
