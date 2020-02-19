@@ -1,8 +1,6 @@
 const Guest = require('../models/Guest');
 const CheckPresents = require('../middleware/CheckPresents');
 
-const GetBillsValues = require('../middleware/GetBillsValues');
-
 module.exports = {
   async store(req, res) {
     const { nome, documento, telefone } = req.body;

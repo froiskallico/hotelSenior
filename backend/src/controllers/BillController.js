@@ -3,6 +3,8 @@ const Bill = require('../models/Bill');
 const GuestValidator = require('./utils/GuestValidator');
 const BillCalculator = require('./utils/BillCalculator');
 
+const UpdateGuestValues = require('../middleware/UpdateGuestValues');
+
 module.exports = {
   async store(req, res) {
     const { hospede, dataEntrada, adicionalVeiculo } = req.body;
@@ -89,6 +91,8 @@ module.exports = {
           bill.adicionalVeiculo,
         );
         bill.valor = billAmount;
+
+        // const values = await UpdateGuestValues(bill.hospede._id, billAmount);
       } catch (err) {
         throw err.message;
       }

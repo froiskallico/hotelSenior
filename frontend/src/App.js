@@ -16,21 +16,27 @@ import api from "./services/api";
 
 function App() {
   const [guests, setGuests] = useState([]);
+  const [pg, setPg] = useState(0);
 
   useEffect(() => {
+    console.log(pg);
     async function loadGuests() {
-      const response = await api.get("/guests");
+      const params = {
+        pg_size: 3,
+        pg
+      };
 
+      const response = await api.get("/guests", { params });
       setGuests(response.data);
     }
 
-    loadGuests();   
-  }, []);
+    loadGuests();
+  }, [pg]);
 
   return (
     <div id="app">
       <TopBar />
-      
+
       <main id="main">
         <DefaultButton title="Incluir pessoa" />
         <Section title="Novo Check-in">
@@ -76,20 +82,18 @@ function App() {
             </thead>
 
             <tbody>
-              {
-                guests.map(guest => (
-                  <tr>
-                    <td>{guest.nome}</td>
-                    <td>{guest.documento}</td>
-                    <td>{guest.telefone}</td>
-                  </tr>
-                ))
-              }
+              {guests.map(guest => (
+                <tr key={guest._id}>
+                  <td>{guest.nome}</td>
+                  <td>{guest.documento}</td>
+                  <td>{guest.telefone}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
 
-          <Previous />
-          <Next />
+          <Previous onClick={setPg} currentPage={pg}/>
+          <Next onClick={setPg} currentPage={pg}/>
         </Section>
       </main>
     </div>
