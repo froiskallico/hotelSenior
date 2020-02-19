@@ -12,7 +12,7 @@ module.exports = async (open) => {
 
   const presentGuests = [];
 
-  openBills.bill.forEach((bill) => {
+  openBills.forEach((bill) => {
     presentGuests.push(bill.hospede);
   });
 

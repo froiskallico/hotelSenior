@@ -1,6 +1,8 @@
 const Guest = require('../models/Guest');
 const CheckPresents = require('../middleware/CheckPresents');
 
+const GetBillsValues = require('../middleware/GetBillsValues');
+
 module.exports = {
   async store(req, res) {
     const { nome, documento, telefone } = req.body;
@@ -60,6 +62,13 @@ module.exports = {
         .limit(parseInt(pg_size) || 10)
         .skip(parseInt(pg_size) * (parseInt(pg) || 0));
     }
+
+    await guest.forEach(async (g) => {
+      const { total, last } = await GetBillsValues(g);
+      console.log(total);
+      console.log(last);
+      // g.valorTotal = await GetBillsValues(g).total;
+    });
 
     return res.json(guest);
   },

@@ -3,7 +3,6 @@ const Bill = require('../models/Bill');
 const GuestValidator = require('./utils/GuestValidator');
 const BillCalculator = require('./utils/BillCalculator');
 
-
 module.exports = {
   async store(req, res) {
     const { hospede, dataEntrada, adicionalVeiculo } = req.body;
@@ -35,7 +34,7 @@ module.exports = {
   },
 
   async index(req, res) {
-    const { open } = req.query;
+    const { open, guestId } = req.query;
     let bill;
 
     if (open == undefined) {
@@ -44,6 +43,10 @@ module.exports = {
       bill = await Bill.find({ dataSaida: { $exists: false } });
     } else if (open == 'false') {
       bill = await Bill.find({ dataSaida: { $exists: true } });
+    }
+
+    if (guestId) {
+      bill = await Bill.aggregate([{ $match: { 'hospede._id': `${guestId}` } }]);
     }
 
     return res.json(bill);
@@ -69,7 +72,7 @@ module.exports = {
       bill.dataSaida = dataSaida;
 
       try {
-        const billAmount = await BillCalculator(bill.hospede, bill.dataEntrada, dataSaida, bill.adicionalVeiculo);
+        const billAmount = await BillCalculator(bill.dataEntrada, dataSaida, bill.adicionalVeiculo);
         bill.valor = billAmount;
       } catch (err) {
         throw (err.message);
