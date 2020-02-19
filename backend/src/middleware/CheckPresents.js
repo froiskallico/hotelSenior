@@ -13,9 +13,7 @@ module.exports = async (open) => {
   const presentGuests = [];
 
   openBills.forEach((bill) => {
-    if (presentGuests.map((guest) => guest._id).indexOf(bill.hospede._id) > -1) {
-      console.log('Já esta');
-    } else {
+    if (!(presentGuests.map((guest) => guest._id).indexOf(bill.hospede._id) > -1)) {
       presentGuests.push(bill.hospede);
     }
   });

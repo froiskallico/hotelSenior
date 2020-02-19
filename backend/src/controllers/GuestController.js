@@ -21,12 +21,10 @@ module.exports = {
 
         return res.json(guest);
       }
-      return res
-        .status(409)
-        .json({
-          error: 'Hóspede já cadastrado com este numero de documento',
-          guest,
-        });
+      return res.status(409).json({
+        error: 'Hóspede já cadastrado com este numero de documento',
+        guest,
+      });
     } catch (err) {
       return res.status(500);
     }
@@ -34,12 +32,7 @@ module.exports = {
 
   async index(req, res) {
     const {
-      nome,
-      documento,
-      telefone,
-      pg,
-      pg_size,
-      present,
+      nome, documento, telefone, pg, pg_size, present,
     } = req.query;
 
     const { _id } = req.params;
@@ -51,12 +44,11 @@ module.exports = {
     } else if (present) {
       guest = await CheckPresents(present);
     } else {
-      guest = await Guest
-        .find({
-          nome: new RegExp(nome, 'i'),
-          documento: new RegExp(documento, 'i'),
-          telefone: new RegExp(telefone, 'i'),
-        })
+      guest = await Guest.find({
+        nome: new RegExp(nome, 'i'),
+        documento: new RegExp(documento, 'i'),
+        telefone: new RegExp(telefone, 'i'),
+      })
         .limit(parseInt(pg_size) || 10)
         .skip(parseInt(pg_size) * (parseInt(pg) || 0));
     }
@@ -86,9 +78,7 @@ module.exports = {
 
         await guest.save();
 
-        return res
-          .status(200)
-          .json(guest);
+        return res.status(200).json(guest);
       }
     } catch (err) {
       return res.status(500);
@@ -100,12 +90,9 @@ module.exports = {
 
     const guest = await Guest.findOneAndDelete({ _id });
 
-    return res
-      .status(200)
-      .json({
-        message: 'Hóspede deletado com sucesso',
-        guest,
-      });
+    return res.status(200).json({
+      message: 'Hóspede deletado com sucesso',
+      guest,
+    });
   },
-
 };
