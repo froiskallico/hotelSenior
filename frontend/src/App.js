@@ -7,6 +7,7 @@ import Section from "./components/Section";
 import TextInput from "./components/TextInput";
 import CheckInput from "./components/CheckInput";
 import RadioInput from "./components/RadioInput";
+import GuestsTable from "./components/GuestsTable";
 
 import { Previous, Next } from "./components/NavigationButtons";
 
@@ -81,26 +82,8 @@ function App() {
             onChange={handleRadioOptionChange}
           />
 
-          <table>
-            <thead>
-              <tr>
-                <th>Nome</th>
-                <th>Documento</th>
-                <th>Valor gasto (R$)</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {guests.map(guest => (
-                <tr key={guest._id}>
-                  <td>{guest.nome}</td>
-                  <td>{guest.documento}</td>
-                  <td>{guest.telefone}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
+          <GuestsTable guests={guests}/>
+          
           <Previous onClick={setPg} currentPage={pg}/>
           <Next onClick={setPg} currentPage={pg}/>
         </Section>
