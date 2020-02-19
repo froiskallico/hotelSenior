@@ -7,13 +7,16 @@ const UpdateGuestValues = require('../middleware/UpdateGuestValues');
 
 module.exports = {
   async store(req, res) {
-    const { hospede, dataEntrada, adicionalVeiculo } = req.body;
+    const {
+      hospede, dataEntrada, dataSaida, adicionalVeiculo,
+    } = req.body;
 
     if (await GuestValidator(hospede)) {
       try {
         const bill = await Bill.create({
           hospede,
           dataEntrada,
+          dataSaida,
           adicionalVeiculo,
         });
 

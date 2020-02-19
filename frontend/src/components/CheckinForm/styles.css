@@ -1,0 +1,4 @@
+.input.textInput {
+  display: flex;
+  flex-direction: column;
+}

@@ -4,10 +4,9 @@ import "./App.css";
 import TopBar from "./components/TopBar";
 import DefaultButton from "./components/DefaultButton";
 import Section from "./components/Section";
-import TextInput from "./components/TextInput";
-import CheckInput from "./components/CheckInput";
 import RadioInput from "./components/RadioInput";
 import GuestsTable from "./components/GuestsTable";
+import CheckinForm from "./components/CheckinForm";
 
 import { Previous, Next } from "./components/NavigationButtons";
 
@@ -46,18 +45,8 @@ function App() {
       <main id="main">
         <DefaultButton title="Incluir pessoa" />
         <Section title="Novo Check-in">
-          <form>
-            <div className="input_group">
-              <TextInput name="dataEntrada" label="Data/hora de entrada" />
-              <TextInput name="dataSaida" label="Data/hora de saida" />
-            </div>
-
-            <div className="input_group">
-              <TextInput name="pessoa" label="Pessoa" />
-              <CheckInput name="possuiVeiculo" label="Possui Veiculo" />
-            </div>
-          </form>
-          <DefaultButton title="Salvar" />
+          <CheckinForm />
+          
         </Section>
 
         <Section title="Consultas">

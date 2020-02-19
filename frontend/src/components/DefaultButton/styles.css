@@ -8,3 +8,12 @@ button.default {
   padding: 0 24px;
   margin-top: 16px;
 }
+
+button.default:hover {
+  background-color: #3232bd;
+}
+
+button.default:active {
+  background-color: #1f1fb3;
+  box-shadow: inset 1px 1px 1px black;
+}

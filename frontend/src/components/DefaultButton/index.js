@@ -2,9 +2,13 @@ import React from 'react';
 
 import './styles.css'
 
-function DefaultButton({ title, callback }) {
+function DefaultButton({ title, onClick }) {
+  function handClick() {
+    onClick()
+  }
+
   return (
-  <button className="default">{title}</button>
+  <button className="default" onClick={handClick}>{title}</button>
   )
 };
 
