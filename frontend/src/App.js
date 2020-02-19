@@ -21,7 +21,6 @@ function App() {
   const [present, setPresent] = useState(true);
 
   useEffect(() => {
-    console.log(present);
     async function loadGuests() {
       const params = {
         pg_size: 3,

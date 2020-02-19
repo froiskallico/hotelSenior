@@ -1,6 +1,7 @@
 const BillController = require('../controllers/BillController');
+const Guest = require('../models/Guest');
 
-module.exports = async (open) => {
+module.exports = async (open, pg_size, pg) => {
   const openBills = await BillController.index(
     (req = { query: { open } }),
     (res = {
@@ -10,13 +11,17 @@ module.exports = async (open) => {
     }),
   );
 
-  const presentGuests = [];
+  const presentIds = [];
 
   openBills.forEach((bill) => {
-    if (!(presentGuests.map((guest) => guest._id).indexOf(bill.hospede._id) > -1)) {
-      presentGuests.push(bill.hospede);
+    if (!(presentIds.indexOf(bill.hospede._id) > -1)) {
+      presentIds.push(bill.hospede._id);
     }
   });
+
+  const presentGuests = await Guest.find({ _id: { $in: presentIds } })
+    .limit(parseInt(pg_size) || 3)
+    .skip(parseInt(pg_size) * (parseInt(pg) || 0));
 
   return presentGuests;
 };
