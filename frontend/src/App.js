@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import TopBar from "./components/TopBar";
-import DefaultButton from "./components/DefaultButton";
 import Section from "./components/Section";
 import RadioInput from "./components/RadioInput";
 import GuestsTable from "./components/GuestsTable";
 import CheckinForm from "./components/CheckinForm";
+import TransitionsModal from "./components/NewGuestModal";
 
 import { Previous, Next } from "./components/NavigationButtons";
 
@@ -37,13 +37,13 @@ function App() {
   function handleRadioOptionChange() {
     setPresent(!present);
   }
-
+  
   return (
     <div id="app">
       <TopBar />
 
       <main id="main">
-        <DefaultButton title="Incluir pessoa" />
+        <TransitionsModal />
         <Section title="Novo Check-in">
           <CheckinForm />
           

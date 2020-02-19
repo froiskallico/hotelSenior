@@ -16,7 +16,7 @@ module.exports = {
             telefone,
           });
         } catch (err) {
-          return res.json({ error: err.message });
+          return res.status(422).json({ error: err.message });
         }
 
         return res.json(guest);

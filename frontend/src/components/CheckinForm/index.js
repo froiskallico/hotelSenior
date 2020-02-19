@@ -42,10 +42,10 @@ const CheckinForm = ({ data }) => {
       <form>
         <div className="input_group">
           <div className="input textInput">
-            <label htmlFor={dataEntrada}>Data/hora de entrada</label>
+            <label htmlFor="dataEntrada">Data/hora de entrada</label>
             <input
-              name={dataEntrada}
-              id={dataEntrada}
+              name="dataEntrada"
+              id="dataEntrada"
               value={dataEntrada}
               onChange={e => setDataEntrada(e.target.value)}
               required
@@ -53,10 +53,10 @@ const CheckinForm = ({ data }) => {
           </div>
 
           <div className="input textInput">
-            <label htmlFor={dataSaida}>Data/hora de saída</label>
+            <label htmlFor="dataSaida">Data/hora de saída</label>
             <input
-              name={dataSaida}
-              id={dataSaida}
+              name="dataSaida"
+              id="dataSaida"
               value={dataSaida}
               onChange={e => setDataSaida(e.target.value)}
               required
@@ -66,10 +66,10 @@ const CheckinForm = ({ data }) => {
 
         <div className="input_group">
           <div className="input textInput">
-            <label htmlFor={nomePessoa}>Pessoa</label>
+            <label htmlFor="nomePessoa">Pessoa</label>
             <input
-              name={nomePessoa}
-              id={nomePessoa}
+              name="nomePessoa"
+              id="nomePessoa"
               value={nomePessoa}
               onChange={e => setNomePessoa(e.target.value)}
               required
