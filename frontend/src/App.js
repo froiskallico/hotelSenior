@@ -17,13 +17,15 @@ import api from "./services/api";
 function App() {
   const [guests, setGuests] = useState([]);
   const [pg, setPg] = useState(0);
+  const [present, setPresent] = useState(true);
 
   useEffect(() => {
-    console.log(pg);
+    console.log(present);
     async function loadGuests() {
       const params = {
         pg_size: 3,
-        pg
+        pg,
+        present
       };
 
       const response = await api.get("/guests", { params });
@@ -31,7 +33,11 @@ function App() {
     }
 
     loadGuests();
-  }, [pg]);
+  }, [pg, present]);
+
+  function handleRadioOptionChange() {
+    setPresent(!present);
+  }
 
   return (
     <div id="app">
@@ -62,7 +68,8 @@ function App() {
             id="true"
             value="true"
             label="Pessoas ainda presentes"
-            checked="checked"
+            checked={present}
+            onChange={handleRadioOptionChange}
           />
 
           <RadioInput
@@ -70,6 +77,8 @@ function App() {
             id="false"
             value="false"
             label="Pessoas que já deixaram o hotel"
+            checked={!present}
+            onChange={handleRadioOptionChange}
           />
 
           <table>
