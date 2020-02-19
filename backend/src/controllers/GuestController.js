@@ -63,13 +63,6 @@ module.exports = {
         .skip(parseInt(pg_size) * (parseInt(pg) || 0));
     }
 
-    await guest.forEach(async (g) => {
-      const { total, last } = await GetBillsValues(g);
-      console.log(total);
-      console.log(last);
-      // g.valorTotal = await GetBillsValues(g).total;
-    });
-
     return res.json(guest);
   },
 

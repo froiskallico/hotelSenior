@@ -20,16 +20,20 @@ module.exports = {
         }
         return res
           .status(501)
-          .json({ error: 'Erro. Check-in não foi efetuado com sucesso. Por favor, tente novamente!' });
+          .json({
+            error:
+              'Erro. Check-in não foi efetuado com sucesso. Por favor, tente novamente!',
+          });
       } catch (err) {
         return res.status(500).json(err);
       }
     } else {
       return res
         .status(422)
-        .json(
-          { error: 'Para fazer o Check-in é necessário informar um hóspede já cadastrado!' },
-        );
+        .json({
+          error:
+            'Para fazer o Check-in é necessário informar um hóspede já cadastrado!',
+        });
     }
   },
 
@@ -46,7 +50,10 @@ module.exports = {
     }
 
     if (guestId) {
-      bill = await Bill.aggregate([{ $match: { 'hospede._id': `${guestId}` } }]);
+      bill = await Bill.aggregate([
+        { $match: { 'hospede._id': `${guestId}` } },
+        { $sort: { dataSaida: -1 } },
+      ]);
     }
 
     return res.json(bill);
@@ -61,21 +68,29 @@ module.exports = {
     try {
       bill = await Bill.findOne({ _id });
     } catch (err) {
-      return res.status(422).json({ error: 'Erro. Conta não encontrada para fazer o checkout!' });
+      return res
+        .status(422)
+        .json({ error: 'Erro. Conta não encontrada para fazer o checkout!' });
     }
 
     if (dataSaida < bill.dataEntrada) {
-      return res.json({ error: 'Erro. A data de saída deve ser posterior à data de entrada' });
+      return res.json({
+        error: 'Erro. A data de saída deve ser posterior à data de entrada',
+      });
     }
 
     try {
       bill.dataSaida = dataSaida;
 
       try {
-        const billAmount = await BillCalculator(bill.dataEntrada, dataSaida, bill.adicionalVeiculo);
+        const billAmount = await BillCalculator(
+          bill.dataEntrada,
+          dataSaida,
+          bill.adicionalVeiculo,
+        );
         bill.valor = billAmount;
       } catch (err) {
-        throw (err.message);
+        throw err.message;
       }
 
       bill.save();
@@ -97,11 +112,9 @@ module.exports = {
       return res.status(500).json(err.message);
     }
 
-    return res
-      .status(200)
-      .json({
-        message: 'Conta deletada com sucesso',
-        bill,
-      });
+    return res.status(200).json({
+      message: 'Conta deletada com sucesso',
+      bill,
+    });
   },
 };

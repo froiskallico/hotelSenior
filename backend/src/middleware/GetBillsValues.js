@@ -23,11 +23,12 @@ module.exports = async (guest) => {
       total += Number(bill.valor);
     });
 
+    console.log(total);
+
     return total;
   }
 
   async function getLast() {
-    last = 1;
 
     // TODO: Here get the last bill amount
   }
