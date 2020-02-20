@@ -71,7 +71,8 @@ export default function TransitionsModal() {
         handleOpen();
       }
     } catch (err) {
-      window.alert(err.message);
+      console.log(err);
+      window.alert("Erro ao processar solicitação: " + err)
       handleOpen();
     }
     setLoading(false);

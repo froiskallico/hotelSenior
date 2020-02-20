@@ -44,10 +44,12 @@ module.exports = {
     } else if (present) {
       guest = await CheckPresents(present, pg_size, pg);
     } else {
-      guest = await Guest.find({
-        nome: new RegExp(nome, 'i'),
-        documento: new RegExp(documento, 'i'),
-        telefone: new RegExp(telefone, 'i'),
+      guest = await Guest.findOne({
+        $or: [
+          { nome },
+          { documento },
+          { telefone },
+        ],
       })
         .limit(parseInt(pg_size))
         .skip(parseInt(pg_size) * (parseInt(pg) || 0));

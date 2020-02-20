@@ -1,16 +1,16 @@
 /* eslint-disable no-alert */
 
-import React, { useState } from 'react';
-import moment from 'moment';
+import React, { useState } from "react";
+import moment from "moment";
 
-import './styles.css';
+import "./styles.css";
 
-import InputMask from 'react-input-mask';
-import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import DefaultButton from '../DefaultButton';
+import InputMask from "react-input-mask";
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import DefaultButton from "../DefaultButton";
 
-import api from '../../services/api';
+import api from "../../services/api";
 
 const CheckinForm = () => {
   const [dataEntrada, setDataEntrada] = useState();
@@ -21,31 +21,31 @@ const CheckinForm = () => {
 
   async function handleSubmit() {
     setLoading(true);
-    const guestResponse = await api.get('/guests', {
-      params: { nome: nomePessoa },
+    const guestResponse = await api.get("/guests", {
+      params: { nome: nomePessoa }
     });
 
-    const hospede = guestResponse.data[0];
-
+    const hospede = guestResponse.data;
 
     const data = {
       hospede,
-      dataEntrada: moment(dataEntrada, 'DD/MM/YYYY HH:mm:ss'),
-      dataSaida: moment(dataSaida, 'DD/MM/YYYY HH:mm:ss'),
-      adicionalVeiculo,
+      dataEntrada: moment(dataEntrada, "DD/MM/YYYY HH:mm:ss"),
+      dataSaida: moment(dataSaida, "DD/MM/YYYY HH:mm:ss"),
+      adicionalVeiculo
     };
 
     try {
-      const response = await api.post('/bills', data);
+      const response = await api.post("/bills", data);
 
       if (response) {
-        window.alert('Check-in criado com sucesso');
+        window.alert("Check-in criado com sucesso");
       } else {
-        window.alert('Erro ao fazer Checkin');
+        window.alert("Erro ao fazer Checkin");
       }
     } catch (err) {
-      window.alert(err);
+      window.alert("Erro ao processar solicitação: " + err);
     }
+
     setLoading(false);
   }
 
@@ -64,7 +64,7 @@ const CheckinForm = () => {
               id="dataEntrada"
               value={dataEntrada}
               mask="99/99/9999 99:99:00"
-              onChange={(e) => setDataEntrada(e.target.value)}
+              onChange={e => setDataEntrada(e.target.value)}
               required
             />
           </div>
@@ -76,7 +76,7 @@ const CheckinForm = () => {
               id="dataSaida"
               value={dataSaida}
               mask="99/99/9999 99:99:00"
-              onChange={(e) => setDataSaida(e.target.value)}
+              onChange={e => setDataSaida(e.target.value)}
               required
             />
           </div>
@@ -89,7 +89,7 @@ const CheckinForm = () => {
               name="nomePessoa"
               id="nomePessoa"
               value={nomePessoa}
-              onChange={(e) => setNomePessoa(e.target.value)}
+              onChange={e => setNomePessoa(e.target.value)}
               required
             />
           </div>
