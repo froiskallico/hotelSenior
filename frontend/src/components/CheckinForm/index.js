@@ -19,11 +19,11 @@ const CheckinForm = () => {
   const [adicionalVeiculo, setAdicionalVeiculo] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  useEffect(()=> {
-    setDataEntrada("20/02/2020 18:00:00");
-    setDataSaida("21/02/2020 19:00:00");
-    setNomePessoa("Fulano de tal")
-  }, [])
+  // useEffect(()=> {
+  //   setDataEntrada("20/02/2020 18:00:00");
+  //   setDataSaida("21/02/2020 19:00:00");
+  //   setNomePessoa("Fulano de tal")
+  // }, [])
 
   async function handleSubmit() {
     setLoading(true);

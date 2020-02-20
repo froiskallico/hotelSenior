@@ -1,8 +1,10 @@
 const BillController = require("../BillController");
 
+
 module.exports = async (checkinDate, checkoutDate, needPark) => {
   checkinDate = new Date(checkinDate);
   checkoutDate = new Date(checkoutDate);
+
 
   // eslint-disable-next-line no-extend-native
   Date.prototype.addDays = function(days) {
@@ -12,6 +14,15 @@ module.exports = async (checkinDate, checkoutDate, needPark) => {
 
     return date;
   };
+
+  console.log(checkoutDate);
+  console.log(checkinDate);
+
+  if (checkoutDate.getDate() == checkinDate.getDate()) {
+    if (checkoutDate <= checkoutDate.setHours(16, 30, 0)) {
+      checkoutDate = checkoutDate.addDays(1)
+    }
+  }
 
   function getDatesBetween(fromDate, toDate) {
     const dateArray = new Array();
@@ -70,5 +81,7 @@ module.exports = async (checkinDate, checkoutDate, needPark) => {
     amount += dailyRate;
   }
 
+  console.log("valor -> " + amount);
+  throw error
   return amount;
 };
