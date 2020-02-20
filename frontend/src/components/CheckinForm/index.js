@@ -20,8 +20,8 @@ const CheckinForm = ({ data }) => {
 
     let data = {
       hospede,
-      dataEntrada: dataEntrada.replace(' ', 'T'),
-      dataSaida: dataSaida.replace(' ', 'T'),
+      dataEntrada: new Date(dataEntrada),
+      dataSaida: new Date(dataSaida),
       adicionalVeiculo
     };
 

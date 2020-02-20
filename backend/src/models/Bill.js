@@ -7,8 +7,8 @@ const BillSchema = new mongoose.Schema({
     type: { GuestSchema },
     required: true,
   },
-  dataEntrada: { type: String, required: true },
-  dataSaida: String,
+  dataEntrada: { type: Date, required: true },
+  dataSaida: Date,
   adicionalVeiculo: { type: Boolean, required: true },
   valor: Number,
 });
