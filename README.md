@@ -19,15 +19,15 @@ Desenvolver uma aplicação [Backend](./backend/) e [Frontend](./frontend/) que 
 
  ## **Requisitos funcionais:**
 
-[x]	Um CRUDL para o cadastro de hóspedes;
+- [x]	Um CRUDL para o cadastro de hóspedes;
 
-[x]	No check in deve ser possível buscar hóspedes cadastrados pelo nome, documento ou telefone;
+- [x]	No check in deve ser possível buscar hóspedes cadastrados pelo nome, documento ou telefone;
 
-[x]	Consultar hóspedes que já realizaram o check in e não estão mais no hotel;
+- [x]	Consultar hóspedes que já realizaram o check in e não estão mais no hotel;
 
-[x]	Consultar hóspedes que ainda estão no hotel;
+- [x]	Consultar hóspedes que ainda estão no hotel;
 
-[x]	As consultas devem apresentar o valor (valor total e o valor da última hospedagem) já gasto pelo hóspede no hotel.
+- [x]	As consultas devem apresentar o valor (valor total e o valor da última hospedagem) já gasto pelo hóspede no hotel.
 
 
 ## **Regras de negócio:**
@@ -37,9 +37,9 @@ Desenvolver uma aplicação [Backend](./backend/) e [Frontend](./frontend/) que 
 -	Caso o horário da saída seja após às 16:30h deve ser cobrada uma diária extra.
     
 **Conforme acordado com o Rafael Liberato:**
-- > Se o hóspede entrar em uma sexta-feira e sair em um sábado, será cobrada apenas uma diária (no valor da diária de sábado = R$ 150,00).
+> - Se o hóspede entrar em uma sexta-feira e sair em um sábado, será cobrada apenas uma diária (no valor da diária de sábado = R$ 150,00).
 
-- > Se o hóspede entrar e sair no mesmo dia, será cobrada uma diária inteira.
+> - Se o hóspede entrar e sair no mesmo dia, será cobrada uma diária inteira.
 
 # **Stack:**
 - API RESTful desenvolvida em [Node.JS](https://nodejs.org/en/)
