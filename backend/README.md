@@ -38,7 +38,7 @@ Desenvolver uma aplicação Backend que possibilite realizar o cadastro de hósp
 
 # 🔨 Instalação
 
-1. O primeiro passo é clonar o repositório. As instruções estão [aqui](../README.md#Instalação);
+1. O primeiro passo é clonar o repositório. As instruções estão [aqui](../README.md#-Instalação);
 
    ```bash
    $ git clone https://github.com/froiskallico/hotelSenior.git
