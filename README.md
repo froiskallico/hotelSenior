@@ -5,7 +5,9 @@
 # **Hotel Senior**
 </div>
 
-Aplicação para Controle de Hóspedes em hotel.
+## 🏨 Aplicação para Controle de Hóspedes em hotel.
+
+
 
 ### ⚙ Ir para a **[Documentação da API](./backend/README.md);** 
 
@@ -14,10 +16,10 @@ Aplicação para Controle de Hóspedes em hotel.
 </br>
 
 
-# **Desafio:**
+# 🔐 **Desafio:**
 Desenvolver uma aplicação [Backend](./backend/) e [Frontend](./frontend/) que possibilite realizar o cadastro de hóspedes e o check-in.
 
- ## **Requisitos funcionais:**
+ ## 👓 **Requisitos funcionais:**
 
 - [x]	Um CRUDL para o cadastro de hóspedes;
 
@@ -30,7 +32,7 @@ Desenvolver uma aplicação [Backend](./backend/) e [Frontend](./frontend/) que 
 - [x]	As consultas devem apresentar o valor (valor total e o valor da última hospedagem) já gasto pelo hóspede no hotel.
 
 
-## **Regras de negócio:**
+### 📏 **Regras de negócio:**
 - Uma diária no hotel de segunda à sexta custa R$120,00;
 -	Uma diária no hotel em finais de semana custa R$150,00;
 -	Caso a pessoa precise de uma vaga na garagem do hotel há um acréscimo diário, sendo R$15,00 de segunda à sexta e R$20,00 nos finais de semana;
@@ -41,15 +43,32 @@ Desenvolver uma aplicação [Backend](./backend/) e [Frontend](./frontend/) que 
 
 > - Se o hóspede entrar e sair no mesmo dia, será cobrada uma diária inteira.
 
-# **Stack:**
-- API RESTful desenvolvida em [Node.JS](https://nodejs.org/en/)
-- Frontend web desenvolvido em [React JS](https://pt-br.reactjs.org/);
-- Banco de Dados NoSQL [Mongo DB](https://www.mongodb.com/) (Hospedado em cloud no Mongo DB Atlas).
+# 🔨 Instalação
 
-### **Principais libs utilizadas:** 
-- [Express](https://expressjs.com/pt-br/);
-- [Mongoose](https://mongoosejs.com/);
-- [Axios](https://github.com/axios/axios);
-- [ESLint](https://eslint.org/);
-- [moment.js](https://momentjs.com/);
-- [Material Design](https://material-ui.com/).
+1. Faça o clone deste repositório digitando no seu terminal :
+   
+   ```bash
+   $ git clone https://github.com/froiskallico/hotelSenior.git
+   ```
+2. Vá para o diretório da API:
+   ```bash
+   $ cd hotelSenior
+   ```
+3. Use o [Yarn](https://yarnpkg.com/) para instalar as dependências:
+   ```bash
+   $ yarn
+   ```
+
+
+# 🧰 **Stack:**
+- 💚 API RESTful desenvolvida em [Node.JS](https://nodejs.org/en/)
+- ⚛ Frontend web desenvolvido em [React JS](https://pt-br.reactjs.org/);
+- 🍃 Banco de Dados NoSQL [Mongo DB](https://www.mongodb.com/) (Hospedado em cloud no Mongo DB Atlas).
+
+### 📚 **Principais libs utilizadas:** 
+- ☕ [Express](https://expressjs.com/pt-br/);
+- 📄 [Mongoose](https://mongoosejs.com/);
+- 🧲 [Axios](https://github.com/axios/axios);
+- 💄 [ESLint](https://eslint.org/);
+- 🕰 [moment.js](https://momentjs.com/);
+- ✍ [Material Design](https://material-ui.com/).

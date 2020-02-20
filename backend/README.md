@@ -8,7 +8,7 @@
 # **Hotel Senior**
 API RESTful para Aplicação de Controle de Hóspedes em hotel.
 
-Desenvolvida usando [Node.JS](https://nodejs.org/en/)
+### 🚀 Desenvolvida usando [Node.JS](https://nodejs.org/en/)
 
 # **Desafio:**
 Desenvolver uma aplicação Backend que possibilite realizar o cadastro de hóspedes e o check-in.
@@ -36,3 +36,4 @@ Desenvolver uma aplicação Backend que possibilite realizar o cadastro de hósp
 - > Se o hóspede entrar em uma sexta-feira e sair em um sábado, será cobrada apenas uma diária (no valor da diária de sábado = R$ 150,00);
 
 - > Se o hóspede entrar e sair no mesmo dia, será cobrada uma diária inteira;
+
