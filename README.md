@@ -2,10 +2,9 @@
 
 [![Senior](./frontend/src/assets/logoSeniorGreen.svg)](https://www.senior.com.br/)
 
+# **Hotel Senior**
 </div>
 
-
-# **Hotel Senior**
 Aplicação para Controle de Hóspedes em hotel.
 
 ### ⚙ Ir para a **[Documentação da API](./backend/README.md);** 
