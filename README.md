@@ -1,8 +1,8 @@
-<center>
+<div align="center">
 
 [![Senior](./frontend/src/assets/logoSeniorGreen.svg)](https://www.senior.com.br/)
 
-</center>
+</div>
 
 
 # **Hotel Senior**
