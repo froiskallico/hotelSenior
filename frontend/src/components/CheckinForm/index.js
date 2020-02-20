@@ -56,7 +56,7 @@ const CheckinForm = () => {
   }
 
   return (
-    <>
+    < >
       <form>
         <Backdrop className="backdrop" open={loading}>
           <CircularProgress color="inherit" />
