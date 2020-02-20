@@ -1,68 +1,78 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
 
-## Available Scripts
+[![Senior](./src/assets/logoSeniorGreen.svg)](https://www.senior.com.br/)
 
-In the project directory, you can run:
+# **Hotel Senior**
 
-### `yarn start`
+</div>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+🏨 **Frontend para Aplicação de Controle de hóspedes em hotel.**
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<div align="center">
 
-### `yarn test`
+![](../utils/FrontendScreenshot.png)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+</div>
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### ⚛ Desenvolvida usando [React JS](https://pt-br.reactjs.org/);
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+# 🔐 **Desafio:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Desenvolver uma solução Frontend que possibilite realizar o cadastro de hóspedes e o check-in.
 
-### `yarn eject`
+## 👓 **Requisitos funcionais:**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [x] Um CRUDL para o cadastro de hóspedes;
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [x] No check in deve ser possível buscar hóspedes cadastrados pelo nome, documento ou telefone;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [x] Consultar hóspedes que já realizaram o check in e não estão mais no hotel;
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [x] Consultar hóspedes que ainda estão no hotel;
 
-## Learn More
+- [x] As consultas devem apresentar o valor (valor total e o valor da última hospedagem) já gasto pelo hóspede no hotel;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 📏 **Regras de negócio:**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Uma diária no hotel de segunda à sexta custa R\$120,00;
+- Uma diária no hotel em finais de semana custa R\$150,00;
+- Caso a pessoa precise de uma vaga na garagem do hotel há um acréscimo diário, sendo R$15,00 de segunda à sexta e R$20,00 nos finais de semana;
+- Caso o horário da saída seja após às 16:30h deve ser cobrada uma diária extra;
 
-### Code Splitting
+**Conforme acordado com o Rafael Liberato:**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- > Se o hóspede entrar em uma sexta-feira e sair em um sábado, será cobrada apenas uma diária (no valor da diária de sábado = R\$ 150,00);
 
-### Analyzing the Bundle Size
+- > Se o hóspede entrar e sair no mesmo dia, será cobrada uma diária inteira;
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+# 🔨 Instalação
 
-### Making a Progressive Web App
+1. O primeiro passo é clonar o repositório. As instruções estão [aqui](https://github.com/froiskallico/hotelSenior/blob/documentation/README.md#-instala%C3%A7%C3%A3o);
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+2. Vá para o diretório do Frontend:
+   ```bash
+   $ cd .../hotelSenior/frontend
+   ```
 
-### Advanced Configuration
+3. Use o [Yarn](https://yarnpkg.com/) para instalar as dependências:
+   ```bash
+   $ yarn
+   ```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+4. Execute o seguinte comando no terminal para iniciar a aplicação.
+   ```bash
+   $ yarn start
+   ```
 
-### Deployment
+    Este comando irá executar o servidor em modo de desenvolvimento. Para acessar a aplicação digite no seu navegador `http://localhost:3000/`. <br /> O servidor irá recarregar automaticamente a aplicação quando os arquivos forem alterados.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `yarn build` fails to minify
+Se quiser preparar a aplicação para produção, digite o comando abaixo
+   ```bash
+   $ yarn build
+   ```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Este comando irá preparar os arquivos, na pasta `build`, otimizados para melhor performance para ambiente de produção.
+
+Para mais informações sobre deploy, [acesse a documentação oficial](https://facebook.github.io/create-react-app/docs/deployment).

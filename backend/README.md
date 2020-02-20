@@ -41,11 +41,7 @@ Desenvolver uma aplicação Backend que possibilite realizar o cadastro de hósp
 
 # 🔨 Instalação
 
-1. O primeiro passo é clonar o repositório. As instruções estão [aqui](../README.md#-Instalação);
-
-   ```bash
-   $ git clone https://github.com/froiskallico/hotelSenior.git
-   ```
+1. O primeiro passo é clonar o repositório. As instruções estão [aqui](https://github.com/froiskallico/hotelSenior/blob/documentation/README.md#-instala%C3%A7%C3%A3o);
 
 2. Vá para o diretório da API:
    ```bash
@@ -61,7 +57,7 @@ Desenvolver uma aplicação Backend que possibilite realizar o cadastro de hósp
    ```
    _ou se você preferir, pode executar o servidor usando o [Nodemon](https://nodemon.io/) durante o desenvolvimento. Dessa forma, não é necessário parar e executar o servidor a cada alteração de arquivos._
    ```bash
-   $ yarn dev #Esse comando irá executar o servidor em modo de produção.
+   $ yarn dev #Esse comando irá executar o servidor em modo de desenvolvimento.
    ```
 
 
