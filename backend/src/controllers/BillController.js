@@ -21,6 +21,7 @@ module.exports = {
             error: 'Erro. A data de saída deve ser posterior à data de entrada',
           });
         }
+
         const bill = await Bill.create({
           hospede,
           dataEntrada,

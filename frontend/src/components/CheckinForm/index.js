@@ -1,46 +1,61 @@
-import React, { useState } from "react";
+/* eslint-disable no-alert */
 
-import "./styles.css";
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 
-import DefaultButton from "../DefaultButton";
+import './styles.css';
+
 import InputMask from 'react-input-mask';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import DefaultButton from '../DefaultButton';
 
-import api from "../../services/api";
+import api from '../../services/api';
 
-const CheckinForm = ({ data }) => {
+const CheckinForm = () => {
   const [dataEntrada, setDataEntrada] = useState();
   const [dataSaida, setDataSaida] = useState();
   const [nomePessoa, setNomePessoa] = useState();
   const [adicionalVeiculo, setAdicionalVeiculo] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  async function handleSubmit() {   
-    const guestResponse = await api.get('/guests', { params: {nome: nomePessoa} } )
+  async function handleSubmit() {
+    setLoading(true);
+    const guestResponse = await api.get('/guests', {
+      params: { nome: nomePessoa },
+    });
 
-    const hospede = guestResponse.data[0]
+    const hospede = guestResponse.data[0];
 
-    let data = {
+
+    const data = {
       hospede,
-      dataEntrada: new Date(dataEntrada),
-      dataSaida: new Date(dataSaida),
-      adicionalVeiculo
+      dataEntrada: moment(dataEntrada, 'DD/MM/YYYY HH:mm:ss'),
+      dataSaida: moment(dataSaida, 'DD/MM/YYYY HH:mm:ss'),
+      adicionalVeiculo,
     };
 
     try {
-      const response = await api.post("/bills", data);
+      const response = await api.post('/bills', data);
 
       if (response) {
-        window.alert("Check-in criado com sucesso")
+        window.alert('Check-in criado com sucesso');
       } else {
-        window.Error("Erro ao fazer Checkin")
+        window.alert('Erro ao fazer Checkin');
       }
     } catch (err) {
       window.alert(err);
     }
+    setLoading(false);
   }
 
   return (
     <>
       <form>
+        <Backdrop className="backdrop" open={loading}>
+          <CircularProgress color="#3c3cd3" />
+        </Backdrop>
+
         <div className="input_group">
           <div className="input textInput">
             <label htmlFor="dataEntrada">Data/hora de entrada</label>
@@ -49,9 +64,9 @@ const CheckinForm = ({ data }) => {
               id="dataEntrada"
               value={dataEntrada}
               mask="99/99/9999 99:99:00"
-              onChange={e => setDataEntrada(e.target.value)}
+              onChange={(e) => setDataEntrada(e.target.value)}
               required
-              />
+            />
           </div>
 
           <div className="input textInput">
@@ -61,7 +76,7 @@ const CheckinForm = ({ data }) => {
               id="dataSaida"
               value={dataSaida}
               mask="99/99/9999 99:99:00"
-              onChange={e => setDataSaida(e.target.value)}
+              onChange={(e) => setDataSaida(e.target.value)}
               required
             />
           </div>
@@ -74,7 +89,7 @@ const CheckinForm = ({ data }) => {
               name="nomePessoa"
               id="nomePessoa"
               value={nomePessoa}
-              onChange={e => setNomePessoa(e.target.value)}
+              onChange={(e) => setNomePessoa(e.target.value)}
               required
             />
           </div>
@@ -85,7 +100,7 @@ const CheckinForm = ({ data }) => {
               name="adicionalVeiculo"
               id="adicionalVeiculo"
               value={adicionalVeiculo}
-              onChange={e => setAdicionalVeiculo(!adicionalVeiculo)}
+              onChange={() => setAdicionalVeiculo(!adicionalVeiculo)}
             />
             <label htmlFor="adicionalVeiculo">Possui Veiculo</label>
           </div>

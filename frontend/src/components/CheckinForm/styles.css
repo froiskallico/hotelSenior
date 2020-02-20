@@ -2,3 +2,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.backdrop {
+  z-index: 999;
+  color: #bbb;
+}
