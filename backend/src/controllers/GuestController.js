@@ -61,7 +61,7 @@ module.exports = {
   async update(req, res) {
     const { _id } = req.params;
     const {
-      nome, documento, telefone, inside, valor,
+      nome, documento, telefone, inside, valorTotal, valorUltimaConta
     } = req.body;
 
     const guest = await Guest.findOne({ _id }, (err) => {

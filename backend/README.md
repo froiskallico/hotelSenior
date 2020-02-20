@@ -55,11 +55,92 @@ Desenvolver uma aplicação Backend que possibilite realizar o cadastro de hósp
    ```bash
    $ yarn start #Esse comando irá executar o servidor para produção.
    ```
-   ou se você preferir, pode executar o servidor usando o [Nodemon](https://nodemon.io/) durante o desenvolvimento. Dessa forma, não é necessário parar e executar o servidor a cada alteração de arquivos.
+   *ou se você preferir, pode executar o servidor usando o [Nodemon](https://nodemon.io/) durante o desenvolvimento. Dessa forma, não é necessário parar e executar o servidor a cada alteração de arquivos.*
    ```bash
    $ yarn dev #Esse comando irá executar o servidor em modo de produção.
    ```
 
 
 
-    *Por padrão, o mesmo irá rodar na porta `3333` mas você pode alterar no arquivo `.env`, no campo SERVER_PORT.*
+    **Por padrão, o mesmo irá rodar na porta `3333` mas você pode alterar no arquivo `.env`, no campo SERVER_PORT.**
+
+# 🗺 Rotas
+
+Por padrão a API está escrita no idioma Inglês mas devido aos Exemplos JSON enviados pela Senior estarem em Português, os nomes dos campos dos objetos estão em português.
+
+## 👥 Guests (Hóspedes )
+Os hóspedes podem ser acessados pela rota `/guests`. Abaixo o *Schema* para um hóspede:
+
+### **GuestSchema:**
+
+```JSON
+{
+  "nome": { "type": "String", "required": true },
+  "documento": { "type": "String", "required": true },
+  "telefone": { "type": "String", "required": true },
+  "valorTotal": { "type": "Number", "default": 0 }, // Armazena o valor total de todos os Check-ins fechados;
+  "valorUltimaConta": { "type": "Number", "default": 0 } //Armazena o valor total do último Check-in fechado;
+}
+  ```
+
+## Cadastrar um usuário
+```HTTP
+ POST /guests
+ ```
+
+Para cadastrar um usuário, basta enviar uma requisição para a rota acima enviando no `body` um `JSON` conforme o exemplo abaixo:
+
+```JSON
+body: {
+  "nome": "Fulano de tal",
+  "documento": "123456789",
+  "telefone": "51 9999 99999"
+}
+```
+## Ler um usuário
+```HTTP
+ GET /guests/:_id
+```
+
+Para ler um usuário, basta enviar uma requisição para a rota acima enviando o `_id` diretamente na rota, conforme exemplo abaixo:
+
+```HTTP
+GET /guests/5e4d4209333e8b457c8f2b93
+```
+Retorna:
+```JSON
+{
+  "valorTotal": 0,
+  "valorUltimaConta": 0,
+  "_id": "5e4d4209333e8b457c8f2b93",
+  "nome": "Fulano de tal",
+  "documento": "123456789",
+  "telefone": "51 9999 99999",
+  "__v": 0
+}
+```
+## Listar Usuários
+```HTTP
+ GET /guests
+ ```
+
+Para filtrar os usuários, enviar no `query` da requisição um ou mais objetos abaixo:
+
+```JSON
+query: {
+{ "nome": "<Nome do Usuário>" }
+}
+```
+
+
+
+## Atualizar Usuário
+```HTTP
+ PUT /guests/:_id
+ ```
+
+## Deletar Usuário
+```HTTP
+ DELETE /guests/:_id
+ ```
+
