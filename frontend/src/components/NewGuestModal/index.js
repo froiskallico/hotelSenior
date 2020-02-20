@@ -62,7 +62,6 @@ export default function TransitionsModal() {
     try {
       const response = await api.post('/guests', data);
 
-      console.log(response);
       if (response) {
         window.alert('Sucesso. Hóspede cadastrado com sucesso!');
         handleClose();
@@ -71,7 +70,6 @@ export default function TransitionsModal() {
         handleOpen();
       }
     } catch (err) {
-      console.log(err);
       window.alert("Erro ao processar solicitação: " + err)
       handleOpen();
     }
