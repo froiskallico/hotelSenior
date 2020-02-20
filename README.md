@@ -55,7 +55,7 @@ Desenvolver uma aplicação [Backend](./backend/) e [Frontend](./frontend/) que 
    $ cd hotelSenior
    ```
 
-3. [Instalar e rodar o Backend](./backend/README.md#-Instalção)
+3. [Instalar e rodar o Backend](./backend/README.md#-Instalação)
 4. [Instalar e rodar o Frontend]
 
 
