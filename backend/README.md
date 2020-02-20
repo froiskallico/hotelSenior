@@ -70,7 +70,7 @@ Por padrão a API está escrita no idioma Inglês mas devido aos Exemplos JSON e
 
 As rotas disponíveis são:
 
-[/guests](./#-Guests-(Hóspedes))
+[/guests](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#-guests-h%C3%B3spedes-)
 
 [/bills]()
 
@@ -91,12 +91,12 @@ Os hóspedes podem ser acessados pela rota `/guests`. Abaixo o *Schema* para um 
   ```
   </br>
 
-## Cadastrar um usuário
+## Cadastrar um hóspede
 ```HTTP
  POST /guests
  ```
 
-Para cadastrar um usuário, basta enviar uma requisição para a rota acima enviando no `body` um `JSON` conforme o exemplo abaixo:
+Para cadastrar um hóspede, basta enviar uma requisição para a rota acima enviando no `body` um `JSON` conforme o exemplo abaixo:
 
 ```JSON
 body: {
@@ -108,12 +108,12 @@ body: {
 
 </br>
 
- ## Ler um usuário
+ ## Ler um hóspede
 ```HTTP
  GET /guests/:_id
 ```
 
-Para ler um usuário, basta enviar uma requisição para a rota acima enviando o `_id` diretamente na rota, conforme exemplo abaixo:
+Para ler um hóspede, basta enviar uma requisição para a rota acima enviando o `_id` diretamente na `URL` rota, conforme exemplo abaixo:
 
 ```HTTP
 GET /guests/5e4d4209333e8b457c8f2b93
@@ -132,29 +132,29 @@ Retorna:
 ```
 </br>
 
-## Listar Usuários
+## Listar Hóspedes
 ```HTTP
  GET /guests
  ```
 
-Para filtrar os usuários, enviar no `query` da requisição um ou mais objetos abaixo:
+Para filtrar os hóspedes, enviar no `param` da requisição um ou mais objetos abaixo:
 
 ```JSON
-query: {
-  { "nome": "<Nome do Usuário>" },
-  { "documento": "<Nome do Usuário>" },
-  { "telefone": "<Telefone do Usuário>" }
+params: {
+  { "nome": "<Nome do Hóspede>" },
+  { "documento": "<Nome do Hóspede>" },
+  { "telefone": "<Telefone do Hóspede>" }
 }
 ```
 </br>
 
 ### Paginação
-A consulta de usuários pode ser paginada para facilitar a leitura dos resultados e diminuir a carga de dados nos retornos das requisições.
+A consulta de hóspedes pode ser paginada para facilitar a leitura dos resultados e diminuir a carga de dados nos retornos das requisições.
 
-Para paginar uma conulta, enviar no `query` da requisição, os objetos `pg_size` e `pg` para determinar o tamanho das páginas e o número da página, respectivamente. Exemplo abaixo:
+Para paginar uma conulta, enviar no `params` da requisição, os objetos `pg_size` e `pg` (valores numéricos) para determinar o tamanho das páginas e o número da página, respectivamente. Exemplo abaixo:
 
 ```JSON
-query: {
+params: {
   { "pg_size": 3 },
   { "pg": 0 }
 }
@@ -163,17 +163,64 @@ A paginação é *zero-indexed*, dessa forma, a primeira página é `pg: 0`;
 
 </br>
 
-## Atualizar Usuário
+## Atualizar Hóspede
 ```HTTP
  PUT /guests/:_id
  ```
+Através dessa rota, é possível efetuar atualização dos atributos de um hóspede. Para isso, basta enviar na `URL` da rota o `_id` do hóspede que se deseja atualizar, e no `body`da requisição, enviar os objetos e valores que serão atualizados, como no exemplo abaixo:
+
+```HTTP
+PUT /guests/5e4d4209333e8b457c8f2b93
+```
+```JSON
+body: {
+  "telefone": "47 91234 5678"
+}
+```
+Retorna:
+```JSON
+{
+  "valorTotal": 0,
+  "_id": "5e4d4209333e8b457c8f2b93",
+  "nome": "Fulano de tal",
+  "documento": "123456789",
+  "telefone": "47 91234 5678",
+  "__v": 0
+}
+```
 
 </br>
 
-## Deletar Usuário
+
+## Deletar Hóspede
+Para deletar um hóspede basta apenas enviar seu `_id` na `URL` da rota.
 ```HTTP
  DELETE /guests/:_id
  ```
+🛑 Atenção. Enviando uma requisição para esta rota você estará deletando um objeto do Banco de Dados. Essa ação é irreversível!
+
+
+Exemplo:
+```HTTP
+DELETE /guests/:_id
+```
+
+Retorna:
+
+```JSON
+{
+  "message": "Hóspede deletado com sucesso",
+  "guest": {
+    "valorTotal": 0,
+    "valorUltimaConta": 0,
+    "_id": "5e485046df0d1a3240af4109",
+    "nome": "Kallico Fróis",
+    "documento": "5106196768",
+    "telefone": "996638145",
+    "__v": 0
+  }
+}
+```
 
 </br>
 

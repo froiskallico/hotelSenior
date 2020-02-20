@@ -43,6 +43,9 @@ module.exports = {
       guest = await Guest.findOne({ _id });
     } else if (present) {
       guest = await CheckPresents(present, pg_size, pg);
+    } else if (!nome && !documento && !telefone) {
+      guest = await Guest.find().limit(parseInt(pg_size))
+        .skip(parseInt(pg_size) * (parseInt(pg) || 0));
     } else {
       guest = await Guest.findOne({
         $or: [
@@ -61,9 +64,8 @@ module.exports = {
   async update(req, res) {
     const { _id } = req.params;
     const {
-      nome, documento, telefone, inside, valorTotal, valorUltimaConta
+      nome, documento, telefone, valorTotal, valorUltimaConta,
     } = req.body;
-
     const guest = await Guest.findOne({ _id }, (err) => {
       if (err) {
         return res.status(422).json({ error: 'Usuário não encontrado!' });
@@ -75,10 +77,10 @@ module.exports = {
         guest.nome = nome || guest.nome;
         guest.documento = documento || guest.documento;
         guest.telefone = telefone || guest.telefone;
-        guest.valorTotal += valor || guest.valorTotal;
-        guest.valorUltimaConta = valor || guest.valorUtimaConta;
+        guest.valorTotal += valorTotal || guest.valorTotal;
+        guest.valorUltimaConta = valorUltimaConta || guest.valorUtimaConta;
 
-        await guest.save();
+        guest.save();
 
         return res.status(200).json(guest);
       }
