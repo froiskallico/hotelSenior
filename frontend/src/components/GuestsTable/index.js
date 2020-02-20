@@ -9,7 +9,9 @@ return (
               <tr>
                 <th>Nome</th>
                 <th>Documento</th>
-                <th>Valor gasto (R$)</th>
+                <th>Telefone</th>
+                <th>Valor total gasto (R$)</th>
+                <th>Valor gasto ultima conta (R$)</th>
               </tr>
             </thead>
 
@@ -19,6 +21,8 @@ return (
                   <td>{guest.nome}</td>
                   <td>{guest.documento}</td>
                   <td>{guest.telefone}</td>
+                  <td>{Number(guest.valorTotal).toFixed(2).replace('.', ',')}</td>
+                  <td>{Number(guest.valorUltimaConta).toFixed(2).replace('.', ',')}</td>
                 </tr>
               ))}
             </tbody>
