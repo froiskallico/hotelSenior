@@ -1,30 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-
-import DefaultButton from "../DefaultButton";
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 import InputMask from 'react-input-mask';
+import DefaultButton from '../DefaultButton';
+
 
 import api from '../../services/api';
 
 import './styles.css';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 998,
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: 0,
-    borderRadius: "8px",
+    borderRadius: '8px',
     boxShadow: theme.shadows[5],
-    padding: "32px",
-    width: "50%",
+    padding: '32px',
+    width: '50%',
+    zIndex: 30,
+  },
+  loading: {
+    color: '#05eebf',
   },
 }));
 
@@ -34,6 +39,7 @@ export default function TransitionsModal() {
   const [nome, setNome] = React.useState();
   const [documento, setDocumento] = React.useState();
   const [telefone, setTelefone] = React.useState();
+  const [loading, setLoading] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -44,31 +50,37 @@ export default function TransitionsModal() {
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
+    handleClose();
+
     const data = {
       nome,
       documento,
-      telefone
-    }
+      telefone,
+    };
 
     try {
       const response = await api.post('/guests', data);
 
       console.log(response);
       if (response) {
-        window.alert("Sucesso. Hóspede cadastrado com sucesso!")
-        handleClose()
+        window.alert('Sucesso. Hóspede cadastrado com sucesso!');
+        handleClose();
       } else {
-        window.alert("ERRO")
+        window.alert('ERRO');
+        handleOpen();
       }
-    } catch(err) {
-      window.alert(err.message)
+    } catch (err) {
+      window.alert(err.message);
+      handleOpen();
     }
-  }
+    setLoading(false);
+  };
 
   return (
     <div>
-      <DefaultButton title="Incluir pessoa" onClick={handleOpen}/>
-      
+      <DefaultButton title="Incluir pessoa" onClick={handleOpen} />
+
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -85,18 +97,18 @@ export default function TransitionsModal() {
           <div className={classes.paper}>
 
             <h3 className="modalTitle">Cadastrar Novo Hóspede</h3>
-            
+
             <div className="input textInput">
               <label htmlFor="nomePessoa">Pessoa</label>
               <input
                 name="nomePessoa"
                 id="nomePessoa"
                 value={nome}
-                onChange={e => setNome(e.target.value)}
+                onChange={(e) => setNome(e.target.value)}
                 required
               />
             </div>
-          
+
             <div className="input textInput">
               <label htmlFor="documento">Documento</label>
               <InputMask
@@ -104,11 +116,11 @@ export default function TransitionsModal() {
                 id="documento"
                 value={documento}
                 mask="999.999.999-99"
-                onChange={e => setDocumento(e.target.value)}
+                onChange={(e) => setDocumento(e.target.value)}
                 required
               />
             </div>
-          
+
             <div className="input textInput">
               <label htmlFor="telefone">Telefone</label>
               <InputMask
@@ -116,15 +128,18 @@ export default function TransitionsModal() {
                 id="telefone"
                 value={telefone}
                 mask="(99) 99999 9999"
-                onChange={e => setTelefone(e.target.value)}
+                onChange={(e) => setTelefone(e.target.value)}
                 required
               />
             </div>
 
-            <DefaultButton title="Salvar" onClick={handleSubmit}/>  
+            <DefaultButton title="Salvar" onClick={handleSubmit} />
           </div>
         </Fade>
       </Modal>
+      <Backdrop className={classes.loading} open={loading}>
+        <CircularProgress color="inherit" open={loading} />
+      </Backdrop>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 
 import './styles.css';
@@ -53,7 +53,7 @@ const CheckinForm = () => {
     <>
       <form>
         <Backdrop className="backdrop" open={loading}>
-          <CircularProgress color="#3c3cd3" />
+          <CircularProgress color="inherit" />
         </Backdrop>
 
         <div className="input_group">
