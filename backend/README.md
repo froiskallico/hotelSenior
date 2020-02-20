@@ -1,19 +1,18 @@
-<center>
+<div align="center">
 
-![Senior](../frontend/src/assets/logoSeniorGreen.svg)
-
-</center>
-
+[![Senior](./frontend/src/assets/logoSeniorGreen.svg)](https://www.senior.com.br/)
 
 # **Hotel Senior**
-API RESTful para Aplicação de Controle de Hóspedes em hotel.
+</div>
+
+🏨 **API RESTful para Aplicação de Controle de Hóspedes em hotel.**
 
 ### 🚀 Desenvolvida usando [Node.JS](https://nodejs.org/en/)
 
-# **Desafio:**
+# 🔐 **Desafio:**
 Desenvolver uma aplicação Backend que possibilite realizar o cadastro de hóspedes e o check-in.
 
-## **Requisitos funcionais**
+## 👓 **Requisitos funcionais:**
 
 [x]	Um CRUDL para o cadastro de hóspedes;
 
@@ -26,7 +25,7 @@ Desenvolver uma aplicação Backend que possibilite realizar o cadastro de hósp
 [x]	As consultas devem apresentar o valor (valor total e o valor da última hospedagem) já gasto pelo hóspede no hotel;
 
 
-## **Regras de negócio:**
+### 📏 **Regras de negócio:**
 - Uma diária no hotel de segunda à sexta custa R$120,00;
 -	Uma diária no hotel em finais de semana custa R$150,00;
 -	Caso a pessoa precise de uma vaga na garagem do hotel há um acréscimo diário, sendo R$15,00 de segunda à sexta e R$20,00 nos finais de semana;
@@ -37,3 +36,30 @@ Desenvolver uma aplicação Backend que possibilite realizar o cadastro de hósp
 
 - > Se o hóspede entrar e sair no mesmo dia, será cobrada uma diária inteira;
 
+# 🔨 Instalação
+
+1. O primeiro passo é clonar o repositório. As instruções estão [aqui](../README.md#Instalação);
+
+   ```bash
+   $ git clone https://github.com/froiskallico/hotelSenior.git
+   ```
+2. Vá para o diretório da API:
+   ```bash
+   $ cd .../hotelSenior/backend
+   ```
+3. Use o [Yarn](https://yarnpkg.com/) para instalar as dependências:
+   ```bash
+   $ yarn
+   ```
+4. Execute o seguinte comando no terminal para iniciar o servidor.
+   ```bash
+   $ yarn start #Esse comando irá executar o servidor para produção.
+   ```
+   ou se você preferir, pode executar o servidor usando o [Nodemon](https://nodemon.io/) durante o desenvolvimento. Dessa forma, não é necessário parar e executar o servidor a cada alteração de arquivos.
+   ```bash
+   $ yarn dev #Esse comando irá executar o servidor em modo de produção.
+   ```
+
+
+
+    *Por padrão, o mesmo irá rodar na porta `3333` mas você pode alterar no arquivo `.env`, no campo SERVER_PORT.*

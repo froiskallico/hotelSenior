@@ -7,7 +7,7 @@
 
 ## 🏨 Aplicação para Controle de Hóspedes em hotel.
 
-
+Esta aplicação foi armazenada em Monorepo. É possível acessar documentação das partes separadas nos seguintes links:
 
 ### ⚙ Ir para a **[Documentação da API](./backend/README.md)** 
 
@@ -54,10 +54,9 @@ Desenvolver uma aplicação [Backend](./backend/) e [Frontend](./frontend/) que 
    ```bash
    $ cd hotelSenior
    ```
-3. Use o [Yarn](https://yarnpkg.com/) para instalar as dependências:
-   ```bash
-   $ yarn
-   ```
+
+3. [Instalar e rodar o Backend](./backend/README.md#Instalção)
+4. [Instalar e rodar o Frontend]
 
 
 # 🧰 **Stack:**
