@@ -33,10 +33,6 @@ export default function TransitionsModal() {
   const [documento, setDocumento] = React.useState();
   const [telefone, setTelefone] = React.useState();
 
-  React.useEffect(() => {
-    handleOpen()
-  }, [])
-
   const handleOpen = () => {
     setOpen(true);
   };

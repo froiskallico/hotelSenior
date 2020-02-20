@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./styles.css";
 
 import DefaultButton from "../DefaultButton";
+import InputMask from 'react-input-mask';
 
 import api from "../../services/api";
 
@@ -19,8 +20,8 @@ const CheckinForm = ({ data }) => {
 
     let data = {
       hospede,
-      dataEntrada,
-      dataSaida,
+      dataEntrada: dataEntrada.replace(' ', 'T'),
+      dataSaida: dataSaida.replace(' ', 'T'),
       adicionalVeiculo
     };
 
@@ -43,21 +44,23 @@ const CheckinForm = ({ data }) => {
         <div className="input_group">
           <div className="input textInput">
             <label htmlFor="dataEntrada">Data/hora de entrada</label>
-            <input
+            <InputMask
               name="dataEntrada"
               id="dataEntrada"
               value={dataEntrada}
+              mask="99/99/9999 99:99:00"
               onChange={e => setDataEntrada(e.target.value)}
               required
-            />
+              />
           </div>
 
           <div className="input textInput">
             <label htmlFor="dataSaida">Data/hora de saída</label>
-            <input
+            <InputMask
               name="dataSaida"
               id="dataSaida"
               value={dataSaida}
+              mask="99/99/9999 99:99:00"
               onChange={e => setDataSaida(e.target.value)}
               required
             />
