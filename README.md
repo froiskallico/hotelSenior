@@ -9,7 +9,7 @@
 
 
 
-### ⚙ Ir para a **[Documentação da API](./backend/README.md);** 
+### ⚙ Ir para a **[Documentação da API](./backend/README.md)** 
 
 ### ✨ Ir para a **[Documentação do Frontend](./frontend/README.md)**
 
