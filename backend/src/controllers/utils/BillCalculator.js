@@ -81,7 +81,5 @@ module.exports = async (checkinDate, checkoutDate, needPark) => {
     amount += dailyRate;
   }
 
-  console.log("valor -> " + amount);
-  throw error
   return amount;
 };

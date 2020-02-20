@@ -5,16 +5,16 @@ const BillCalculator = require("./utils/BillCalculator");
 
 const UpdateGuestValues = require("../middleware/UpdateGuestValues");
 
+const moment = require('moment');
+
 module.exports = {
   async store(req, res) {
     const { hospede, dataEntrada, dataSaida, adicionalVeiculo } = req.body;
 
     if (await GuestValidator(hospede)) {
       try {
-        if (dataSaida < dataEntrada) {
-          return res.json({
-            error: "Erro. A data de saída deve ser posterior à data de entrada"
-          });
+        if (moment(dataSaida) < moment(dataEntrada)) {
+          throw new Error("Erro. A data de saída deve ser posterior à data de entrada");
         }
 
         const bill = await Bill.create({
