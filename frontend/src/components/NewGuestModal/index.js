@@ -6,6 +6,8 @@ import Fade from '@material-ui/core/Fade';
 
 import DefaultButton from "../DefaultButton";
 
+import InputMask from 'react-input-mask';
+
 import api from '../../services/api';
 
 import './styles.css';
@@ -97,10 +99,11 @@ export default function TransitionsModal() {
           
             <div className="input textInput">
               <label htmlFor="documento">Documento</label>
-              <input
+              <InputMask
                 name="documento"
                 id="documento"
                 value={documento}
+                mask="999.999.999-99"
                 onChange={e => setDocumento(e.target.value)}
                 required
               />
@@ -108,10 +111,11 @@ export default function TransitionsModal() {
           
             <div className="input textInput">
               <label htmlFor="telefone">Telefone</label>
-              <input
+              <InputMask
                 name="telefone"
                 id="telefone"
                 value={telefone}
+                mask="(99) 99999 9999"
                 onChange={e => setTelefone(e.target.value)}
                 required
               />
