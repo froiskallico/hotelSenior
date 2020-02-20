@@ -69,9 +69,9 @@ Por padrão a API está escrita no idioma Inglês mas devido aos Exemplos JSON e
 
 As rotas disponíveis são:
 
-[/guests](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#-guests-h%C3%B3spedes-)
+[/guests](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#-guests-h%C3%B3spedes)
 
-[/bills]()
+[/bills](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#-bills-contascheck-ins)
 
 ## 👥 Guests (hóspedes)
 
@@ -91,15 +91,15 @@ Os hóspedes podem ser acessados pela rota `/guests`. Abaixo o _Schema_ para um 
 
 Os campos `valorTotal` e `valorUltimaConta` são, respectivamente, o valor total já gasto por um hóspede no hotel e o valor do último check-in de um hóspede. Estes campos são atualizados automaticamente quando um check-in tem sua `dataSaida` cadastrada ou atualizada.
 
-- [Cadastrar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#cadastrar-um-h%C3%B3spede)
+- [Cadastrar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#cadastrar-h%C3%B3spede)
 
 - [Ler](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#ler-um-h%C3%B3spede)
 
 - [Listar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#listar-h%C3%B3spedes)
 
-- [Atualizar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#atualizar-h%C3%B3spedes)
+- [Atualizar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#atualizar-h%C3%B3spede)
 
-- [Deletar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#deletar-h%C3%B3spedes)
+- [Deletar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#deletar-h%C3%B3spede)
 
   </br>
 
@@ -273,15 +273,13 @@ Os check-ins podem ser acessados pela rota `/bills`. Abaixo o _Schema_ para um c
 
 Ao criar ou atualizar um check-in informando sua `dataSaida`, a API irá calcular o valor da estadia e atualizar os campos `valorTotal` e `valorUltimaConta` do hóspede vinculado.
 
-- [Cadastrar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#cadastrar-um-check-in)
-
-- [Ler](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#ler-um-check-in)
+- [Cadastrar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#cadastrar-check-in)
 
 - [Listar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#listar-check-ins)
 
-- [Atualizar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#atualizar-check-ins)
+- [Atualizar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#atualizar-check-in)
 
-- [Deletar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#deletar-check-ins)
+- [Deletar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#deletar-check-in)
 
   </br>
 
