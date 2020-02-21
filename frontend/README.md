@@ -48,7 +48,7 @@ Desenvolver uma solução Frontend que possibilite realizar o cadastro de hóspe
 
 # 🔨 Instalação
 
-1. O primeiro passo é clonar o repositório. As instruções estão [aqui](https://github.com/froiskallico/hotelSenior/blob/documentation/README.md#-instala%C3%A7%C3%A3o);
+1. O primeiro passo é clonar o repositório. As instruções estão [aqui](https://github.com/froiskallico/hotelSenior/blob/master/README.md#-instala%C3%A7%C3%A3o);
 
 2. Vá para o diretório do Frontend:
    ```bash
