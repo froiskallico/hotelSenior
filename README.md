@@ -55,8 +55,8 @@ Desenvolver uma aplicação [Backend](./backend/) e [Frontend](./frontend/) que 
    $ cd hotelSenior
    ```
 
-3. [Instalar e rodar o Backend](https://github.com/froiskallico/hotelSenior/blob/documentation/backend/README.md#-Instalação)
-4. [Instalar e rodar o Frontend](https://github.com/froiskallico/hotelSenior/blob/documentation/frontend/README.md#-Instalação)
+3. [Instalar e rodar o Backend](https://github.com/froiskallico/hotelSenior/blob/master/backend/README.md#-instala%C3%A7%C3%A3o)
+4. [Instalar e rodar o Frontend](https://github.com/froiskallico/hotelSenior/blob/master/backend/README.md#-instala%C3%A7%C3%A3o)
 
 
 # 🧰 **Stack:**
