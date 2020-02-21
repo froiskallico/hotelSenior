@@ -41,7 +41,7 @@ Desenvolver uma aplicação Backend que possibilite realizar o cadastro de hósp
 
 # 🔨 Instalação
 
-1. O primeiro passo é clonar o repositório. As instruções estão [aqui](https://github.com/froiskallico/hotelSenior/blob/documentation/README.md#-instala%C3%A7%C3%A3o);
+1. O primeiro passo é clonar o repositório. As instruções estão [aqui](https://github.com/froiskallico/hotelSenior/blob/master/README.md#-instala%C3%A7%C3%A3o);
 
 2. Vá para o diretório da API:
    ```bash
@@ -69,9 +69,9 @@ Por padrão a API está escrita no idioma Inglês mas devido aos Exemplos JSON e
 
 As rotas disponíveis são:
 
-[/guests](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#-guests-h%C3%B3spedes)
+[/guests](https://github.com/froiskallico/hotelSenior/tree/master/backend#-guests-h%C3%B3spedes)
 
-[/bills](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#-bills-contascheck-ins)
+[/bills](https://github.com/froiskallico/hotelSenior/tree/master/backend#-bills-contascheck-ins)
 
 ## 👥 Guests (hóspedes)
 
@@ -91,15 +91,15 @@ Os hóspedes podem ser acessados pela rota `/guests`. Abaixo o _Schema_ para um 
 
 Os campos `valorTotal` e `valorUltimaConta` são, respectivamente, o valor total já gasto por um hóspede no hotel e o valor do último check-in de um hóspede. Estes campos são atualizados automaticamente quando um check-in tem sua `dataSaida` cadastrada ou atualizada.
 
-- [Cadastrar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#cadastrar-h%C3%B3spede)
+- [Cadastrar](https://github.com/froiskallico/hotelSenior/tree/master/backend#cadastrar-h%C3%B3spede)
 
-- [Ler](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#ler-um-h%C3%B3spede)
+- [Ler](https://github.com/froiskallico/hotelSenior/tree/master/backend#ler-um-h%C3%B3spede)
 
-- [Listar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#listar-h%C3%B3spedes)
+- [Listar](https://github.com/froiskallico/hotelSenior/tree/master/backend#listar-h%C3%B3spedes)
 
-- [Atualizar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#atualizar-h%C3%B3spede)
+- [Atualizar](https://github.com/froiskallico/hotelSenior/tree/master/backend#atualizar-h%C3%B3spede)
 
-- [Deletar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#deletar-h%C3%B3spede)
+- [Deletar](https://github.com/froiskallico/hotelSenior/tree/master/backend#deletar-h%C3%B3spede)
 
   </br>
 
@@ -273,13 +273,13 @@ Os check-ins podem ser acessados pela rota `/bills`. Abaixo o _Schema_ para um c
 
 Ao criar ou atualizar um check-in informando sua `dataSaida`, a API irá calcular o valor da estadia e atualizar os campos `valorTotal` e `valorUltimaConta` do hóspede vinculado.
 
-- [Cadastrar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#cadastrar-check-in)
+- [Cadastrar](https://github.com/froiskallico/hotelSenior/tree/master/backend#cadastrar-check-in)
 
-- [Listar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#listar-check-ins)
+- [Listar](https://github.com/froiskallico/hotelSenior/tree/master/backend#listar-check-ins)
 
-- [Atualizar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#atualizar-check-in)
+- [Atualizar](https://github.com/froiskallico/hotelSenior/tree/master/backend#atualizar-check-in)
 
-- [Deletar](https://github.com/froiskallico/hotelSenior/tree/documentation/backend#deletar-check-in)
+- [Deletar](https://github.com/froiskallico/hotelSenior/tree/master/backend#deletar-check-in)
 
   </br>
 
@@ -423,7 +423,7 @@ Para executar requisições diretamente à API você pode usar o [Insomnia](http
 
 <div align="center">
 
-[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=seniorHotel%20API&uri=https%3A%2F%2Fraw.githubusercontent.com%2Ffroiskallico%2FhotelSenior%2Fdocumentation%2Futils%2Finsomnia.json%3Ftoken%3DAL2EPMYOXZ4TQSYKJX76DQ26J322C)
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=seniorHotel%20API&uri=https%3A%2F%2Fraw.githubusercontent.com%2Ffroiskallico%2FhotelSenior%2Fmaster%2Futils%2Finsomnia.json%3Ftoken%3DAL2EPMYOXZ4TQSYKJX76DQ26J322C)
 
 </div>
 
